@@ -1,0 +1,702 @@
+[
+  {
+    "comment_id": 1,
+    "board_id": 100,
+    "member_id": "LOCAL_member16",
+    "content": "터미널 직원분께 말씀드리면 바로 작동시켜 주십니다!",
+    "create_date": "2026-01-06T21:05:12Z"
+  },
+  {
+    "comment_id": 2,
+    "board_id": 100,
+    "member_id": "LOCAL_member763",
+    "content": "저번에 봤는데 잘 작동하더라고요 걱정 마세요",
+    "create_date": "2026-01-06T21:10:45Z"
+  },
+  {
+    "comment_id": 3,
+    "board_id": 100,
+    "member_id": "LOCAL_member845",
+    "content": "리프트 속도가 좀 느리긴 한데 안전해요",
+    "create_date": "2026-01-06T21:15:20Z"
+  },
+  {
+    "comment_id": 4,
+    "board_id": 99,
+    "member_id": "LOCAL_member1255",
+    "content": "아... 형님... 바지 세탁비 입금해드려요?",
+    "create_date": "2026-01-06T10:15:33Z"
+  },
+  {
+    "comment_id": 5,
+    "board_id": 99,
+    "member_id": "LOCAL_member1280",
+    "content": "인간의 존엄성을 잃었네 ㅠㅠ 힘내라",
+    "create_date": "2026-01-06T10:30:11Z"
+  },
+  {
+    "comment_id": 6,
+    "board_id": 98,
+    "member_id": "LOCAL_member1392",
+    "content": "여기가 화장실 미슐랭 가이드임 ㅋㅋㅋ",
+    "create_date": "2026-01-04T10:30:11Z"
+  },
+  {
+    "comment_id": 7,
+    "board_id": 98,
+    "member_id": "LOCAL_member869",
+    "content": "나도 여기서 정보 많이 얻어감 ㅋㅋ 숨은 꿀팁 많음",
+    "create_date": "2026-01-04T11:05:20Z"
+  },
+  {
+    "comment_id": 8,
+    "board_id": 97,
+    "member_id": "LOCAL_member1392",
+    "content": "거기 밤에는 노숙자들 때문에 잠가놓는다고 들음",
+    "create_date": "2026-01-04T02:00:55Z"
+  },
+  {
+    "comment_id": 9,
+    "board_id": 97,
+    "member_id": "LOCAL_member1128",
+    "content": "아 급한데 잠겨있으면 진짜 멘붕오지 ㅠㅠ",
+    "create_date": "2026-01-04T02:15:20Z"
+  },
+  {
+    "comment_id": 10,
+    "board_id": 97,
+    "member_id": "LOCAL_member595",
+    "content": "근처 상가 화장실로 뛰어가라 형",
+    "create_date": "2026-01-04T02:30:44Z"
+  },
+  {
+    "comment_id": 11,
+    "board_id": 93,
+    "member_id": "LOCAL_member786",
+    "content": "그냥 커피 한 잔 사먹고 당당하게 써라 ㅋㅋㅋ",
+    "create_date": "2025-12-29T01:30:12Z"
+  },
+  {
+    "comment_id": 12,
+    "board_id": 93,
+    "member_id": "LOCAL_member63",
+    "content": "비번 1234 아니면 0000 국룰 아님?",
+    "create_date": "2025-12-29T02:05:59Z"
+  },
+  {
+    "comment_id": 13,
+    "board_id": 88,
+    "member_id": "LOCAL_member266",
+    "content": "거기 가로등 깜빡거리는 거 진짜 공포영화임",
+    "create_date": "2025-12-22T18:10:33Z"
+  },
+  {
+    "comment_id": 14,
+    "board_id": 88,
+    "member_id": "LOCAL_member408",
+    "content": "밤바다 소리랑 섞여서 더 무서움 ㄷㄷ",
+    "create_date": "2025-12-22T18:55:01Z"
+  },
+  {
+    "comment_id": 15,
+    "board_id": 88,
+    "member_id": "LOCAL_member563",
+    "content": "귀신보다 사람이 더 무서운 세상이다 조심해라",
+    "create_date": "2025-12-22T19:20:44Z"
+  },
+  {
+    "comment_id": 16,
+    "board_id": 88,
+    "member_id": "LOCAL_member462",
+    "content": "난 거기서 고양이 튀어나와서 기절할 뻔함",
+    "create_date": "2025-12-22T20:15:30Z"
+  },
+  {
+    "comment_id": 17,
+    "board_id": 83,
+    "member_id": "LOCAL_member426",
+    "content": "와이파이 비번 좀 공유해줘라 형",
+    "create_date": "2025-12-17T05:05:11Z"
+  },
+  {
+    "comment_id": 18,
+    "board_id": 83,
+    "member_id": "LOCAL_member452",
+    "content": "데이터 없을 때 개꿀이네 메모",
+    "create_date": "2025-12-17T05:30:00Z"
+  },
+  {
+    "comment_id": 19,
+    "board_id": 83,
+    "member_id": "LOCAL_member1380",
+    "content": "속도 빠름? 유튜브 볼 정도 됨?",
+    "create_date": "2025-12-17T05:45:12Z"
+  },
+  {
+    "comment_id": 20,
+    "board_id": 78,
+    "member_id": "LOCAL_member285",
+    "content": "평가 장인님, 제주 동쪽 성산 근처에 깨끗한 데 추천 좀요",
+    "create_date": "2025-12-13T02:20:55Z"
+  },
+  {
+    "comment_id": 21,
+    "board_id": 78,
+    "member_id": "LOCAL_member584",
+    "content": "이거 유료 서비스로 출시해도 될듯 ㅋㅋㅋ",
+    "create_date": "2025-12-13T03:10:22Z"
+  },
+  {
+    "comment_id": 22,
+    "board_id": 56,
+    "member_id": "LOCAL_member716",
+    "content": "도두봉 근처면 냄새 인정... 바다 짠내랑 섞여서 최악임",
+    "create_date": "2025-11-26T00:05:44Z"
+  },
+  {
+    "comment_id": 23,
+    "board_id": 56,
+    "member_id": "LOCAL_member1346",
+    "content": "비위 약하면 절대 못 들어감 헛구역질 나옴",
+    "create_date": "2025-11-26T01:15:33Z"
+  },
+  {
+    "comment_id": 24,
+    "board_id": 56,
+    "member_id": "LOCAL_member351",
+    "content": "거기 말고 조금 더 가서 카페 화장실 써라",
+    "create_date": "2025-11-26T02:20:11Z"
+  },
+  {
+    "comment_id": 25,
+    "board_id": 56,
+    "member_id": "LOCAL_member1205",
+    "content": "숨 참고 들어가서 1분 컷 하고 나옴",
+    "create_date": "2025-11-26T02:35:44Z"
+  },
+  {
+    "comment_id": 26,
+    "board_id": 43,
+    "member_id": "LOCAL_member369",
+    "content": "천제연 폭포 화장실 바닥 진짜 미끄러움 조심해라",
+    "create_date": "2025-11-17T10:30:22Z"
+  },
+  {
+    "comment_id": 27,
+    "board_id": 43,
+    "member_id": "LOCAL_member170",
+    "content": "나도 거기서 슬라이딩 할 뻔함 ㅋㅋㅋ",
+    "create_date": "2025-11-17T11:40:11Z"
+  },
+  {
+    "comment_id": 28,
+    "board_id": 43,
+    "member_id": "LOCAL_member821",
+    "content": "물기 좀 닦아주지 관리가 안 되네",
+    "create_date": "2025-11-17T12:15:33Z"
+  },
+  {
+    "comment_id": 29,
+    "board_id": 34,
+    "member_id": "LOCAL_member415",
+    "content": "칸막이 낮으면 일어서다가 옆 사람이랑 눈 마주침 ㅋㅋㅋ",
+    "create_date": "2025-11-10T19:10:44Z"
+  },
+  {
+    "comment_id": 30,
+    "board_id": 34,
+    "member_id": "LOCAL_member442",
+    "content": "서로 민망해서 모른 척 하는 게 국룰",
+    "create_date": "2025-11-10T20:05:22Z"
+  },
+  {
+    "comment_id": 31,
+    "board_id": 34,
+    "member_id": "LOCAL_member749",
+    "content": "제발 칸막이 좀 높여줘라 프라이버시 존중 좀",
+    "create_date": "2025-11-10T21:20:11Z"
+  },
+  {
+    "comment_id": 32,
+    "board_id": 34,
+    "member_id": "LOCAL_member226",
+    "content": "앉아있으면 정수리 보일 정도임?",
+    "create_date": "2025-11-10T21:45:33Z"
+  },
+  {
+    "comment_id": 33,
+    "board_id": 1,
+    "member_id": "LOCAL_member807",
+    "content": "한라수목원 화장실 물소리 진짜 큼 ㅋㅋㅋ 폭포수임",
+    "create_date": "2025-10-09T21:10:22Z"
+  },
+  {
+    "comment_id": 34,
+    "board_id": 1,
+    "member_id": "LOCAL_member1221",
+    "content": "오히려 소리 커서 맘 편하게 볼일 봄",
+    "create_date": "2025-10-09T22:05:44Z"
+  },
+  {
+    "comment_id": 35,
+    "board_id": 1,
+    "member_id": "LOCAL_member1106",
+    "content": "밤에 가면 소리 때문에 더 무서움 ㄷㄷ",
+    "create_date": "2025-10-09T22:30:11Z"
+  },
+  {
+    "comment_id": 36,
+    "board_id": 5,
+    "member_id": "LOCAL_member1138",
+    "content": "손 건조기 바람 세면 물 다 튀어서 싫던데",
+    "create_date": "2025-10-11T19:05:33Z"
+  },
+  {
+    "comment_id": 37,
+    "board_id": 5,
+    "member_id": "LOCAL_member1337",
+    "content": "빨리 말라서 좋긴 함 ㅋㅋㅋ 다이슨인가?",
+    "create_date": "2025-10-11T19:45:22Z"
+  },
+  {
+    "comment_id": 38,
+    "board_id": 9,
+    "member_id": "LOCAL_member972",
+    "content": "드림타워 화장실 진짜 좋음 호텔급임",
+    "create_date": "2025-10-16T03:20:44Z"
+  },
+  {
+    "comment_id": 39,
+    "board_id": 9,
+    "member_id": "LOCAL_member793",
+    "content": "거기서 살고 싶더라 ㅋㅋㅋ 우리집보다 좋음",
+    "create_date": "2025-10-16T04:10:22Z"
+  },
+  {
+    "comment_id": 40,
+    "board_id": 18,
+    "member_id": "LOCAL_member1204",
+    "content": "어리목 화장실 겨울에 가면 손 짤림 ㅋㅋㅋ 온수 좀 틀어줘라",
+    "create_date": "2025-10-27T19:45:33Z"
+  },
+  {
+    "comment_id": 41,
+    "board_id": 18,
+    "member_id": "LOCAL_member874",
+    "content": "등산하고 내려와서 손 씻는데 비명 지름",
+    "create_date": "2025-10-27T20:30:11Z"
+  },
+  {
+    "comment_id": 42,
+    "board_id": 28,
+    "member_id": "LOCAL_member780",
+    "content": "제주공항 에어컨은 인정이지 ㅋㅋㅋ 피서지임",
+    "create_date": "2025-11-05T01:20:44Z"
+  },
+  {
+    "comment_id": 43,
+    "board_id": 28,
+    "member_id": "LOCAL_member921",
+    "content": "비행기 기다리면서 화장실에만 있었음 시원해서",
+    "create_date": "2025-11-05T02:45:22Z"
+  },
+  {
+    "comment_id": 44,
+    "board_id": 50,
+    "member_id": "LOCAL_member552",
+    "content": "거울에 살려주세요 써있는거 나도 봄 ㄷㄷ 장난이겠지?",
+    "create_date": "2025-11-21T21:15:33Z"
+  },
+  {
+    "comment_id": 45,
+    "board_id": 50,
+    "member_id": "LOCAL_member416",
+    "content": "월드컵 경기장 화장실 핸드드라이어 바람 진짜 쎔 ㅋㅋㅋ 볼살 떨림",
+    "create_date": "2025-11-21T22:40:11Z"
+  },
+  {
+    "comment_id": 46,
+    "board_id": 65,
+    "member_id": "LOCAL_member1348",
+    "content": "공원 화장실 벌레 퇴치기 필수임 모기 너무 많아",
+    "create_date": "2025-11-30T17:20:44Z"
+  },
+  {
+    "comment_id": 47,
+    "board_id": 65,
+    "member_id": "LOCAL_member1467",
+    "content": "ㅋㅋㅋㅋㅋㅋㅋ",
+    "create_date": "2025-11-30T18:10:22Z"
+  },
+  {
+    "comment_id": 48,
+    "board_id": 70,
+    "member_id": "LOCAL_member1422",
+    "content": "아기가 못 참았다니 ㅋㅋㅋ 귀엽네 고생했다",
+    "create_date": "2025-12-04T15:05:33Z"
+  },
+  {
+    "comment_id": 49,
+    "board_id": 70,
+    "member_id": "LOCAL_member1013",
+    "content": "시민회관 화장실 밤 10시에 잠기는 거 몰랐네 꿀정보 감사",
+    "create_date": "2025-12-04T16:20:44Z"
+  },
+  {
+    "comment_id": 50,
+    "board_id": 100,
+    "member_id": "LOCAL_member882",
+    "content": "리프트 고장 나면 진짜 난감하겠다 관리 잘 해야 할 듯",
+    "create_date": "2026-01-07T00:45:11Z"
+  },
+  {
+    "comment_id": 51,
+    "board_id": 100,
+    "member_id": "LOCAL_member841",
+    "content": "터미널 측에 문의해보는 게 제일 빠를 듯",
+    "create_date": "2026-01-07T01:05:22Z"
+  },
+  {
+    "comment_id": 52,
+    "board_id": 92,
+    "member_id": "LOCAL_member323",
+    "content": "절물 휴양림 화장실 물 진짜 차가움 ㅋㅋㅋ 정신 번쩍 듦",
+    "create_date": "2025-12-28T18:40:11Z"
+  },
+  {
+    "comment_id": 53,
+    "board_id": 92,
+    "member_id": "LOCAL_member906",
+    "content": "온수 조절 안 되면 겨울엔 가기 싫더라",
+    "create_date": "2025-12-28T19:30:44Z"
+  },
+  {
+    "comment_id": 54,
+    "board_id": 85,
+    "member_id": "LOCAL_member1035",
+    "content": "서귀포 장애인 화장실 정보 찾기 힘든데 공유 좀",
+    "create_date": "2025-12-20T18:05:33Z"
+  },
+  {
+    "comment_id": 55,
+    "board_id": 85,
+    "member_id": "LOCAL_member1158",
+    "content": "올레시장 근처 공영주차장 화장실 괜찮음",
+    "create_date": "2025-12-20T19:20:11Z"
+  },
+  {
+    "comment_id": 56,
+    "board_id": 76,
+    "member_id": "LOCAL_member805",
+    "content": "세면대 센서 고장 나면 진짜 답답함 손 흔들고 난리 남",
+    "create_date": "2025-12-10T05:45:44Z"
+  },
+  {
+    "comment_id": 57,
+    "board_id": 76,
+    "member_id": "LOCAL_member264",
+    "content": "해수욕장 화장실 모래는 어쩔 수 없는 듯 ㅠㅠ 청소하시는 분들 고생하심",
+    "create_date": "2025-12-10T06:55:22Z"
+  },
+  {
+    "comment_id": 58,
+    "board_id": 76,
+    "member_id": "LOCAL_member940",
+    "content": "화장실 평가하고 다니는 사람 ㅋㅋㅋ 컨셉 독특하네",
+    "create_date": "2025-12-10T07:20:11Z"
+  },
+  {
+    "comment_id": 59,
+    "board_id": 66,
+    "member_id": "LOCAL_member1101",
+    "content": "함덕 서우봉 해변 화장실 앞 주차 헬임 절대 가지 마",
+    "create_date": "2025-12-01T14:30:44Z"
+  },
+  {
+    "comment_id": 60,
+    "board_id": 66,
+    "member_id": "LOCAL_member205",
+    "content": "차라리 좀 멀리 대고 걸어가는 게 빠름",
+    "create_date": "2025-12-01T15:45:33Z"
+  },
+  {
+    "comment_id": 61,
+    "board_id": 45,
+    "member_id": "LOCAL_member1449",
+    "content": "월드컵 경기장 화장실 핸드드라이어 성능 인정 ㅋㅋㅋ",
+    "create_date": "2025-11-19T01:15:22Z"
+  },
+  {
+    "comment_id": 62,
+    "board_id": 45,
+    "member_id": "LOCAL_member340",
+    "content": "손 넣자마자 물기 사라짐 마법인 줄",
+    "create_date": "2025-11-19T02:10:44Z"
+  },
+  {
+    "comment_id": 63,
+    "board_id": 20,
+    "member_id": "LOCAL_member714",
+    "content": "폰 두고 왔는데 그대로 있다니 역시 한국 치안 클라스",
+    "create_date": "2025-10-29T09:20:33Z"
+  },
+  {
+    "comment_id": 64,
+    "board_id": 20,
+    "member_id": "LOCAL_member438",
+    "content": "나도 지갑 두고 왔는데 찾음 ㅋㅋㅋ 감동",
+    "create_date": "2025-10-29T10:05:11Z"
+  },
+  {
+    "comment_id": 65,
+    "board_id": 11,
+    "member_id": "LOCAL_member616",
+    "content": "오설록 화장실 가글 기계 진짜 좋음 입안이 상쾌해짐",
+    "create_date": "2025-10-17T06:30:44Z"
+  },
+  {
+    "comment_id": 66,
+    "board_id": 11,
+    "member_id": "LOCAL_member117",
+    "content": "데이트하기 전에 필수 코스임 ㅋㅋㅋ",
+    "create_date": "2025-10-17T07:55:22Z"
+  },
+  {
+    "comment_id": 67,
+    "board_id": 11,
+    "member_id": "LOCAL_member544",
+    "content": "별도봉 공원 화장실 문 잠겨있으면 진짜 난감하겠다",
+    "create_date": "2025-10-17T08:30:11Z"
+  },
+  {
+    "comment_id": 68,
+    "board_id": 99,
+    "member_id": "LOCAL_member1418",
+    "content": "못 참았다니... 위로를 표합니다...",
+    "create_date": "2026-01-06T11:45:44Z"
+  },
+  {
+    "comment_id": 69,
+    "board_id": 99,
+    "member_id": "LOCAL_member1257",
+    "content": "다음엔 미리미리 가자 ㅋㅋㅋ",
+    "create_date": "2026-01-06T12:20:33Z"
+  },
+  {
+    "comment_id": 70,
+    "board_id": 95,
+    "member_id": "LOCAL_member468",
+    "content": "화장실 휴지통 없으면 진짜 당황스러움 어디다 버려야 할지",
+    "create_date": "2026-01-01T12:40:11Z"
+  },
+  {
+    "comment_id": 71,
+    "board_id": 95,
+    "member_id": "LOCAL_member601",
+    "content": "요즘은 다 변기에 버리는 추세라 적응해야 함",
+    "create_date": "2026-01-01T13:55:44Z"
+  },
+  {
+    "comment_id": 72,
+    "board_id": 90,
+    "member_id": "LOCAL_member1065",
+    "content": "환풍기 소리 탱크 지나가는 거 인정 ㅋㅋㅋ 귀 먹먹함",
+    "create_date": "2025-12-28T12:30:22Z"
+  },
+  {
+    "comment_id": 73,
+    "board_id": 90,
+    "member_id": "LOCAL_member1108",
+    "content": "그래도 환기는 잘 되겠네 긍정적으로 생각하자",
+    "create_date": "2025-12-28T13:45:11Z"
+  },
+  {
+    "comment_id": 74,
+    "board_id": 80,
+    "member_id": "LOCAL_member1459",
+    "content": "몰카 걱정 없는 화장실 찾기 힘들다 ㅠㅠ",
+    "create_date": "2025-12-16T05:15:33Z"
+  },
+  {
+    "comment_id": 75,
+    "board_id": 80,
+    "member_id": "LOCAL_member16",
+    "content": "안심 비상벨 있는 곳으로 가야 함",
+    "create_date": "2025-12-16T06:50:11Z"
+  },
+  {
+    "comment_id": 76,
+    "board_id": 74,
+    "member_id": "LOCAL_member808",
+    "content": "넥슨 박물관 화장실 휴지통 자동인 거 신기하더라",
+    "create_date": "2025-12-07T02:20:44Z"
+  },
+  {
+    "comment_id": 77,
+    "board_id": 74,
+    "member_id": "LOCAL_member503",
+    "content": "손 갖다 대면 열리는 거? 오 쩐다",
+    "create_date": "2025-12-07T03:45:33Z"
+  },
+  {
+    "comment_id": 78,
+    "board_id": 62,
+    "member_id": "LOCAL_member1282",
+    "content": "가방 걸이 부러져 있으면 진짜 난감함 바닥에 둘 수도 없고",
+    "create_date": "2025-11-29T02:10:22Z"
+  },
+  {
+    "comment_id": 79,
+    "board_id": 62,
+    "member_id": "LOCAL_member144",
+    "content": "문고리에 걸어야지 뭐 ㅠㅠ",
+    "create_date": "2025-11-29T03:55:11Z"
+  },
+  {
+    "comment_id": 80,
+    "board_id": 54,
+    "member_id": "LOCAL_member376",
+    "content": "발로 문 여는 거 나만 그런 거 아니었네 ㅋㅋㅋ 찝찝해",
+    "create_date": "2025-11-23T18:30:44Z"
+  },
+  {
+    "comment_id": 81,
+    "board_id": 54,
+    "member_id": "LOCAL_member623",
+    "content": "휴지로 감싸서 열거나 발로 열거나 둘 중 하나지",
+    "create_date": "2025-11-23T19:45:22Z"
+  },
+  {
+    "comment_id": 82,
+    "board_id": 41,
+    "member_id": "LOCAL_member1333",
+    "content": "이호테우 등대 화장실 물 안 나오면 진짜 헬인데",
+    "create_date": "2025-11-15T19:40:11Z"
+  },
+  {
+    "comment_id": 83,
+    "board_id": 41,
+    "member_id": "LOCAL_member1349",
+    "content": "물티슈 필수 지참해야 함",
+    "create_date": "2025-11-15T20:05:33Z"
+  },
+  {
+    "comment_id": 84,
+    "board_id": 36,
+    "member_id": "LOCAL_member1301",
+    "content": "탑동 공원 화장실 냄새 진짜 심함 관리 좀 해라",
+    "create_date": "2025-11-11T23:45:22Z"
+  },
+  {
+    "comment_id": 85,
+    "board_id": 36,
+    "member_id": "LOCAL_member1444",
+    "content": "숨 참고 들어가야 됨 ㄹㅇ",
+    "create_date": "2025-11-12T00:40:44Z"
+  },
+  {
+    "comment_id": 86,
+    "board_id": 27,
+    "member_id": "LOCAL_member1249",
+    "content": "화장실에서 이상한 소리 들리면 무서움 ㄷㄷ",
+    "create_date": "2025-11-04T10:55:33Z"
+  },
+  {
+    "comment_id": 87,
+    "board_id": 27,
+    "member_id": "LOCAL_member373",
+    "content": "누가 장 트러블 났나 보지 ㅋㅋㅋ",
+    "create_date": "2025-11-04T11:10:22Z"
+  },
+  {
+    "comment_id": 88,
+    "board_id": 15,
+    "member_id": "LOCAL_member1100",
+    "content": "화장실 거울 너무 높으면 키 작은 사람은 서러움 ㅠㅠ",
+    "create_date": "2025-10-21T22:30:11Z"
+  },
+  {
+    "comment_id": 89,
+    "board_id": 15,
+    "member_id": "LOCAL_member380",
+    "content": "까치발 들고 봐야 함 ㅋㅋㅋ",
+    "create_date": "2025-10-21T23:45:33Z"
+  },
+  {
+    "comment_id": 90,
+    "board_id": 5,
+    "member_id": "LOCAL_member704",
+    "content": "손 건조기 밑에 물 흥건하면 미끄러질 뻔한 적 많음",
+    "create_date": "2025-10-11T21:05:44Z"
+  },
+  {
+    "comment_id": 91,
+    "board_id": 5,
+    "member_id": "LOCAL_member74",
+    "content": "바닥 청소 좀 자주 해줬으면 좋겠음",
+    "create_date": "2025-10-11T22:40:11Z"
+  },
+  {
+    "comment_id": 92,
+    "board_id": 1,
+    "member_id": "LOCAL_member1436",
+    "content": "한라수목원 화장실 물소리 진짜 큼 ㅋㅋㅋ",
+    "create_date": "2025-10-10T00:20:33Z"
+  },
+  {
+    "comment_id": 93,
+    "board_id": 1,
+    "member_id": "LOCAL_member524",
+    "content": "시원하게 내려가는 소리라 생각하자",
+    "create_date": "2025-10-10T01:15:22Z"
+  },
+  {
+    "comment_id": 94,
+    "board_id": 4,
+    "member_id": "LOCAL_member918",
+    "content": "민속 오일장 화장실 에어컨 고장 나면 진짜 찜통임",
+    "create_date": "2025-10-11T18:40:44Z"
+  },
+  {
+    "comment_id": 95,
+    "board_id": 4,
+    "member_id": "LOCAL_member1063",
+    "content": "여름엔 냄새까지 더해져서 최악 ㅠㅠ",
+    "create_date": "2025-10-11T19:05:11Z"
+  },
+  {
+    "comment_id": 96,
+    "board_id": 4,
+    "member_id": "LOCAL_member227",
+    "content": "빨리 고쳐주세요 현기증 난단 말이에요",
+    "create_date": "2025-10-11T19:10:33Z"
+  },
+  {
+    "comment_id": 97,
+    "board_id": 3,
+    "member_id": "LOCAL_member694",
+    "content": "화장실 문 잠금장치 고장 나면 진짜 불안함",
+    "create_date": "2025-10-10T08:45:22Z"
+  },
+  {
+    "comment_id": 98,
+    "board_id": 3,
+    "member_id": "LOCAL_member553",
+    "content": "한 손으로 문 잡고 볼일 봐야 됨 ㅋㅋㅋ",
+    "create_date": "2025-10-10T09:05:44Z"
+  },
+  {
+    "comment_id": 99,
+    "board_id": 2,
+    "member_id": "LOCAL_member194",
+    "content": "제주항 화장실 변기 막힘 자주 일어남? 무섭네",
+    "create_date": "2025-10-10T05:20:11Z"
+  },
+  {
+    "comment_id": 100,
+    "board_id": 2,
+    "member_id": "LOCAL_member685",
+    "content": "사람이 많아서 그런가 봄 관리 좀 잘 해주지",
+    "create_date": "2025-10-10T06:45:33Z"
+  }
+]

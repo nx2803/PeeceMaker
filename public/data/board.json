@@ -1,0 +1,802 @@
+[
+  {
+    "board_id": 100,
+    "create_date": "2026-01-06T23:42:44.633Z",
+    "title": "제주 시외버스터미널 휠체어 리프트 작동 되나요?",
+    "content": "장애인용 화장실 가려는데 계단만 보임 ㅠ",
+    "data_cd": "PT0408",
+    "member_id": "LOCAL_user380@example.com"
+  },
+  {
+    "board_id": 99,
+    "create_date": "2026-01-05T17:19:40.826Z",
+    "title": "아...",
+    "content": "하...",
+    "data_cd": "PT0265",
+    "member_id": "LOCAL_user644@example.com"
+  },
+  {
+    "board_id": 98,
+    "create_date": "2026-01-05T13:57:56.244Z",
+    "title": "화장실 후기 남기는 사이트 여기밖에 없냐?",
+    "content": "다른 데는 정보가 없네 여기가 짱인듯",
+    "data_cd": "PT0098",
+    "member_id": "LOCAL_user209@example.com"
+  },
+  {
+    "board_id": 97,
+    "create_date": "2026-01-04T09:38:02.063Z",
+    "title": "별도봉 공원 화장실 문 잠겨있는데 이거 맞음?",
+    "content": "24시간 개방이라며... 사기 당했다 내 방광 책임져",
+    "data_cd": "PT0374",
+    "member_id": "LOCAL_user693@example.com"
+  },
+  {
+    "board_id": 96,
+    "create_date": "2026-01-02T19:32:54.083Z",
+    "title": "화장실 문에 명언 적혀있음 ㅋㅋㅋ",
+    "content": "'신은 용기 있는 자를 버리지 않는다' 힘주고 쌈",
+    "data_cd": "PT0217",
+    "member_id": "LOCAL_user690@example.com"
+  },
+  {
+    "board_id": 95,
+    "create_date": "2026-01-01T07:48:13.131Z",
+    "title": "화장실 휴지통 없는 거 적응 안됨",
+    "content": "휴지 변기에 버리라는데 자꾸 잊어버림 나만 그럼?",
+    "data_cd": "PT0207",
+    "member_id": "LOCAL_user1109@example.com"
+  },
+  {
+    "board_id": 94,
+    "create_date": "2025-12-31T14:12:02.826Z",
+    "title": "세면대에 발 씻는 아저씨 봄 ㅡㅡ",
+    "content": "제발 매너 좀... 세수하기도 찝찝하네",
+    "data_cd": "PT0357",
+    "member_id": "LOCAL_user37@example.com"
+  },
+  {
+    "board_id": 93,
+    "create_date": "2025-12-31T00:19:30.665Z",
+    "title": "비번 걸려있는 화장실 뚫는 법 공유함",
+    "content": "은 뻥이고 그냥 상가 이용하고 당당하게 써라",
+    "data_cd": "PT0119",
+    "member_id": "LOCAL_user613@example.com"
+  },
+  {
+    "board_id": 92,
+    "create_date": "2025-12-30T06:19:33.208Z",
+    "title": "절물 자연 휴양림 화장실 세면대 온수 조절 안됨",
+    "content": "용암 나오거나 얼음물 나옴 중간이 없음",
+    "data_cd": "PT0100",
+    "member_id": "LOCAL_user1184@example.com"
+  },
+  {
+    "board_id": 91,
+    "create_date": "2025-12-29T13:07:43.604Z",
+    "title": "용눈이오름 화장실 ㅁㅊ 휴지 없는거 실화냐?",
+    "content": "다행히 가방에 물티슈 있어서 살았다... 니들은 꼭 챙겨가라",
+    "data_cd": "PT0195",
+    "member_id": "LOCAL_user1146@example.com"
+  },
+  {
+    "board_id": 90,
+    "create_date": "2025-12-28T20:02:27.196Z",
+    "title": "화장실 환풍기 소리 탱크 지나감",
+    "content": "너무 시끄러워서 귀 먹먹함 볼일 집중 안됨",
+    "data_cd": "PT0010",
+    "member_id": "LOCAL_user1143@example.com"
+  },
+  {
+    "board_id": 89,
+    "create_date": "2025-12-27T21:45:56.910Z",
+    "title": "함덕 해수욕장 화장실 노래 선곡 누가함?",
+    "content": "이별 노래 연속으로 나옴 볼일 보다 울 뻔",
+    "data_cd": "PT0153",
+    "member_id": "LOCAL_user1277@example.com"
+  },
+  {
+    "board_id": 88,
+    "create_date": "2025-12-23T13:32:52.225Z",
+    "title": "밤에 용두암 화장실 가지마셈 개무서움",
+    "content": "가로등 깜빡거리는데 귀신 나올거같음 지릴뻔",
+    "data_cd": "PT0354",
+    "member_id": "LOCAL_user1235@example.com"
+  },
+  {
+    "board_id": 87,
+    "create_date": "2025-12-23T02:53:04.730Z",
+    "title": "주유소 화장실 기름 냄새 쩐다",
+    "content": "오래 있으면 취할 거 같음 환기 좀 시켜주세요",
+    "data_cd": "PT0022",
+    "member_id": "LOCAL_user1054@example.com"
+  },
+  {
+    "board_id": 86,
+    "create_date": "2025-12-23T01:30:19.376Z",
+    "title": "노형 슈퍼마켓 화장실 거울 셀카 맛집임 ㅋㅋㅋ",
+    "content": "조명 좋아서 사진 잘 나옴 ㅋㅋㅋ 볼일 말고 사진 찍으러 옴",
+    "data_cd": "PT0137",
+    "member_id": "LOCAL_user841@example.com"
+  },
+  {
+    "board_id": 85,
+    "create_date": "2025-12-22T10:59:04.965Z",
+    "title": "서귀포 쪽에 장애인 화장실 잘 되어있는 곳 추천좀",
+    "content": "휠체어 들어가기 편한 곳 찾고 있는데 정보가 없네 ㅠ",
+    "data_cd": "PT0113",
+    "member_id": "LOCAL_user303@example.com"
+  },
+  {
+    "board_id": 84,
+    "create_date": "2025-12-18T18:56:39.277Z",
+    "title": "남녀공용이라 좀 민망함;;",
+    "content": "문 하나 두고 마주치면 세상 어색함... 분리 좀 해줘라",
+    "data_cd": "PT0036",
+    "member_id": "LOCAL_user751@example.com"
+  },
+  {
+    "board_id": 83,
+    "create_date": "2025-12-18T03:35:53.475Z",
+    "title": "와이파이 터지는 화장실 개꿀",
+    "content": "유튜브 보면서 느긋하게 쌈 데이터 아낌",
+    "data_cd": "PT0029",
+    "member_id": "LOCAL_user1154@example.com"
+  },
+  {
+    "board_id": 82,
+    "create_date": "2025-12-17T16:29:14.544Z",
+    "title": "제주 오일장 화장실 사람 개많음",
+    "content": "장날이라 그런가 줄 서서 기다림... 미리 싸고 와라",
+    "data_cd": "PT0400",
+    "member_id": "LOCAL_user552@example.com"
+  },
+  {
+    "board_id": 81,
+    "create_date": "2025-12-16T22:05:03.717Z",
+    "title": "청소 시간 피해서 가라 쫓겨남",
+    "content": "아주머니 포스 장난 아님 급해도 얄짤 없음",
+    "data_cd": "PT0359",
+    "member_id": "LOCAL_user279@example.com"
+  },
+  {
+    "board_id": 80,
+    "create_date": "2025-12-16T04:44:53.851Z",
+    "title": "아이 러브 화장실",
+    "content": "여기서 살고싶다",
+    "data_cd": "PT0328",
+    "member_id": "LOCAL_user522@example.com"
+  },
+  {
+    "board_id": 79,
+    "create_date": "2025-12-14T20:31:01.375Z",
+    "title": "변기 커버 차가워서 소리지름",
+    "content": "엉덩이 동상 걸리는 줄 겨울엔 커버 씌워주라",
+    "data_cd": "PT0402",
+    "member_id": "LOCAL_user709@example.com"
+  },
+  {
+    "board_id": 78,
+    "create_date": "2025-12-14T17:16:06.890Z",
+    "title": "화장실 평가하고 다니는 사람인데 질문 받는다",
+    "content": "제주도 내 화장실 데이터 다 있음 궁금한 거 물어봐",
+    "data_cd": "PT0132",
+    "member_id": "LOCAL_user174@example.com"
+  },
+  {
+    "board_id": 77,
+    "create_date": "2025-12-14T16:40:16.168Z",
+    "title": "해수욕장 화장실 모래 테러 ㄷㄷ",
+    "content": "바닥이 그냥 모래사장임 맨발로 들어가지 마셈",
+    "data_cd": "PT0149",
+    "member_id": "LOCAL_user802@example.com"
+  },
+  {
+    "board_id": 76,
+    "create_date": "2025-12-13T09:41:57.372Z",
+    "title": "세면대 수도꼭지 센서 고장남",
+    "content": "손 갖다 대도 반응 없음 춤춰야 나옴",
+    "data_cd": "PT0315",
+    "member_id": "LOCAL_user85@example.com"
+  },
+  {
+    "board_id": 75,
+    "create_date": "2025-12-12T08:36:15.363Z",
+    "title": "제주 도서관 화장실 칫솔 살균기 있음?",
+    "content": "점심 먹고 양치해야 되는데 위생 상태 궁금함",
+    "data_cd": "PT0276",
+    "member_id": "LOCAL_user589@example.com"
+  },
+  {
+    "board_id": 74,
+    "create_date": "2025-12-10T15:55:32.871Z",
+    "title": "제주 넥슨 컴퓨터 박물관 화장실 휴지통 뚜껑 자동임",
+    "content": "손 갖다 대면 열림 신문물 영접함 ㅋㅋㅋ",
+    "data_cd": "PT0232",
+    "member_id": "LOCAL_user584@example.com"
+  },
+  {
+    "board_id": 73,
+    "create_date": "2025-12-08T16:28:17.852Z",
+    "title": "남자 화장실 소변기 칸막이 좀 해줘라",
+    "content": "옆 사람 시선 느껴져서 안 나옴 프라이버시 존중 좀",
+    "data_cd": "PT0306",
+    "member_id": "LOCAL_user105@example.com"
+  },
+  {
+    "board_id": 72,
+    "create_date": "2025-12-08T03:36:37.835Z",
+    "title": "제주도 화장실 인심 좋네",
+    "content": "무료 개방인데 온수도 콸콸 나옴 굿굿",
+    "data_cd": "PT0384",
+    "member_id": "LOCAL_user314@example.com"
+  },
+  {
+    "board_id": 71,
+    "create_date": "2025-12-07T09:38:47.869Z",
+    "title": "한림 공원 화장실 청소하시는 분 상 줘야됨",
+    "content": "반짝반짝 광이 남. 쾌적 그 자체",
+    "data_cd": "PT0376",
+    "member_id": "LOCAL_user145@example.com"
+  },
+  {
+    "board_id": 70,
+    "create_date": "2025-12-07T06:52:34.522Z",
+    "title": "아기가 못참았다..",
+    "content": "아...",
+    "data_cd": "PT0291",
+    "member_id": "LOCAL_user1169@example.com"
+  },
+  {
+    "board_id": 69,
+    "create_date": "2025-12-06T15:16:44.809Z",
+    "title": "비데 어딨냐",
+    "content": "나 비데 없으면 못쓰는데",
+    "data_cd": "PT0083",
+    "member_id": "LOCAL_user825@example.com"
+  },
+  {
+    "board_id": 68,
+    "create_date": "2025-12-06T14:30:46.946Z",
+    "title": "화장실 타일 색깔 눈 아픔 ㅋㅋㅋ",
+    "content": "형광 핑크색 도배해놈 정신병 걸릴 거 같음",
+    "data_cd": "PT0058",
+    "member_id": "LOCAL_user444@example.com"
+  },
+  {
+    "board_id": 67,
+    "create_date": "2025-12-05T18:51:50.245Z",
+    "title": "급똥 신호 왔을 때 대처법 알려줌",
+    "content": "다리 꼬고 상체 숙이고... 는 개뿔 그냥 뛰어라",
+    "data_cd": "PT0115",
+    "member_id": "LOCAL_user801@example.com"
+  },
+  {
+    "board_id": 66,
+    "create_date": "2025-12-04T17:20:41.458Z",
+    "title": "형들 함덕 서우봉 해변 화장실 앞 주차 되냐?",
+    "content": "급해서 차 아무데나 대고 뛰었는데 딱지 떼일까봐 불안하다",
+    "data_cd": "PT0138",
+    "member_id": "LOCAL_user317@example.com"
+  },
+  {
+    "board_id": 65,
+    "create_date": "2025-12-04T10:06:05.236Z",
+    "title": "공원 화장실 벌레 퇴치기 있음?",
+    "content": "모기한테 헌혈하고 옴 간지러워 죽겠다",
+    "data_cd": "PT0208",
+    "member_id": "LOCAL_user17@example.com"
+  },
+  {
+    "board_id": 64,
+    "create_date": "2025-12-03T00:34:12.698Z",
+    "title": "중문 면세점 화장실 방향제 냄새 머리아픔",
+    "content": "라벤더 향이라는데 독가스 수준임 코 막고 쌈",
+    "data_cd": "PT0232",
+    "member_id": "LOCAL_user146@example.com"
+  },
+  {
+    "board_id": 63,
+    "create_date": "2025-12-02T21:53:52.599Z",
+    "title": "화장실 입구에 CCTV 있어도 되냐?",
+    "content": "범죄 예방이라는데 좀 찝찝하긴 함",
+    "data_cd": "PT0419",
+    "member_id": "LOCAL_user47@example.com"
+  },
+  {
+    "board_id": 62,
+    "create_date": "2025-12-02T19:08:06.419Z",
+    "title": "화장실 칸 안에 가방 걸이 부러짐",
+    "content": "가방 안고 쌈... 팔 저려 죽는 줄 고쳐주세요",
+    "data_cd": "PT0098",
+    "member_id": "LOCAL_user1234@example.com"
+  },
+  {
+    "board_id": 61,
+    "create_date": "2025-12-02T15:49:29.857Z",
+    "title": "삼양 해수욕장 화장실 비누 없음 챙겨가라",
+    "content": "물로만 씻으니까 찝찝함 종이비누 필수템",
+    "data_cd": "PT0155",
+    "member_id": "LOCAL_user1268@example.com"
+  },
+  {
+    "board_id": 60,
+    "create_date": "2025-12-01T20:46:18.099Z",
+    "title": "우도 하고수동 해수욕장 변기 수압 약하니까 조심해라",
+    "content": "휴지 많이 넣으면 100퍼 막힘... 내가 막아봐서 암",
+    "data_cd": "PT0122",
+    "member_id": "LOCAL_user555@example.com"
+  },
+  {
+    "board_id": 59,
+    "create_date": "2025-12-01T13:43:49.691Z",
+    "title": "송악산 전망대 화장실 뷰 맛집 2탄 올림",
+    "content": "이번엔 산 뷰임 피톤치드 마시면서 쾌변 가능",
+    "data_cd": "PT0229",
+    "member_id": "LOCAL_user574@example.com"
+  },
+  {
+    "board_id": 58,
+    "create_date": "2025-11-30T15:44:34.036Z",
+    "title": "화장실 냄새 제거 꿀팁 공유함",
+    "content": "성냥 하나 켜면 직빵임 근데 화재 경보기 울릴 수도 ㅋㅋㅋ",
+    "data_cd": "PT0257",
+    "member_id": "LOCAL_user697@example.com"
+  },
+  {
+    "board_id": 57,
+    "create_date": "2025-11-29T23:34:24.001Z",
+    "title": "외돌개 화장실 문 틈 너무 넓은데?",
+    "content": "밖에서 보일까봐 불안해서 폰으로 가리고 쌈",
+    "data_cd": "PT0183",
+    "member_id": "LOCAL_user1474@example.com"
+  },
+  {
+    "board_id": 56,
+    "create_date": "2025-11-29T18:11:26.044Z",
+    "title": "도두봉 근처 화장실 절대 가지마라;;",
+    "content": "냄새 진짜 선넘음 헛구역질 나옴 비위 약하면 딴데 가셈",
+    "data_cd": "PT0004",
+    "member_id": "LOCAL_user43@example.com"
+  },
+  {
+    "board_id": 55,
+    "create_date": "2025-11-29T10:52:01.256Z",
+    "title": "제주 현대 미술관 화장실 문이 투명 유리임?",
+    "content": "은 아니고 매직미러인가? 밖에서 안 보이겠지? 개불안",
+    "data_cd": "PT0308",
+    "member_id": "LOCAL_user1001@example.com"
+  },
+  {
+    "board_id": 54,
+    "create_date": "2025-11-27T15:40:03.297Z",
+    "title": "화장실 문고리 잡기 싫어서 발로 엶",
+    "content": "코로나 이후로 결벽증 생김 나 같은 사람 있냐?",
+    "data_cd": "PT0167",
+    "member_id": "LOCAL_user681@example.com"
+  },
+  {
+    "board_id": 53,
+    "create_date": "2025-11-26T23:53:24.551Z",
+    "title": "신화월드 화장실 비데 리모컨 고장남",
+    "content": "물줄기 안 멈춰서 당황함 엉덩이 물고문 당함",
+    "data_cd": "PT0286",
+    "member_id": "LOCAL_user1144@example.com"
+  },
+  {
+    "board_id": 52,
+    "create_date": "2025-11-26T22:31:34.693Z",
+    "title": "용눈이오름 화장실 ㅁㅊ 휴지 없는거 실화냐?",
+    "content": "다행히 가방에 물티슈 있어서 살았다... 니들은 꼭 챙겨가라",
+    "data_cd": "PT0101",
+    "member_id": "LOCAL_user866@example.com"
+  },
+  {
+    "board_id": 51,
+    "create_date": "2025-11-26T05:48:32.361Z",
+    "title": "화장실 거울 조명 셀카 잘 나옴?",
+    "content": "오늘 화장 잘 먹어서 사진 남겨야됨 추천 좀",
+    "data_cd": "PT0104",
+    "member_id": "LOCAL_user871@example.com"
+  },
+  {
+    "board_id": 50,
+    "create_date": "2025-11-25T11:43:37.685Z",
+    "title": "화장실 거울에 '살려주세요' 써있음",
+    "content": "장난이겠지? 소름 돋아서 바로 나옴",
+    "data_cd": "PT0046",
+    "member_id": "LOCAL_user1071@example.com"
+  },
+  {
+    "board_id": 49,
+    "create_date": "2025-11-25T08:31:07.049Z",
+    "title": "제주 시민회관 화장실 밤 10시에 잠김",
+    "content": "급해서 갔다가 문 닫혀서 낭패 봄 시간 확인 잘해라",
+    "data_cd": "PT0059",
+    "member_id": "LOCAL_user898@example.com"
+  },
+  {
+    "board_id": 48,
+    "create_date": "2025-11-25T01:10:53.186Z",
+    "title": "급똥쟁이들아 노형 오거리 근처면 여기 꼭 기억해라",
+    "content": "개방화장실인데 관리 개잘되어있음. 비데도 있다.",
+    "data_cd": "PT0049",
+    "member_id": "LOCAL_user700@example.com"
+  },
+  {
+    "board_id": 47,
+    "create_date": "2025-11-24T11:33:14.628Z",
+    "title": "아 휴지",
+    "content": "아",
+    "data_cd": "PT0380",
+    "member_id": "LOCAL_user1266@example.com"
+  },
+  {
+    "board_id": 46,
+    "create_date": "2025-11-23T05:02:21.899Z",
+    "title": "공항 근처 깨끗한 화장실 추천함",
+    "content": "렌트카 반납하기 전에 들리기 딱 좋음",
+    "data_cd": "PT0380",
+    "member_id": "LOCAL_user58@example.com"
+  },
+  {
+    "board_id": 45,
+    "create_date": "2025-11-22T08:57:17.387Z",
+    "title": "제주 월드컵 경기장 화장실 핸드드라이어 바람 세기 태풍급 ㅋㅋㅋ",
+    "content": "손 넣었다가 살 가죽 벗겨지는 줄",
+    "data_cd": "PT0167",
+    "member_id": "LOCAL_user301@example.com"
+  },
+  {
+    "board_id": 44,
+    "create_date": "2025-11-22T04:03:52.185Z",
+    "title": "안돌오름 화장실 폼 미쳤다 ㅋㅋㅋ",
+    "content": "들어갔는데 클래식 나오고 향기남;; 우리집보다 좋음 ㄹㅇ",
+    "data_cd": "PT0395",
+    "member_id": "LOCAL_user361@example.com"
+  },
+  {
+    "board_id": 43,
+    "create_date": "2025-11-18T22:34:39.671Z",
+    "title": "천제연 폭포 화장실 바닥 미끄럼 방지 됨?",
+    "content": "슬리퍼 신고 갔다가 트리플 악셀 뜀 조심해라",
+    "data_cd": "PT0124",
+    "member_id": "LOCAL_user410@example.com"
+  },
+  {
+    "board_id": 42,
+    "create_date": "2025-11-16T14:27:05.748Z",
+    "title": "곽지 해수욕장 화장실 옷 갈아입기 좋음?",
+    "content": "탈의실 못 찾아서 여기서 갈아입으려는데 바닥 깨끗하냐",
+    "data_cd": "PT0243",
+    "member_id": "LOCAL_user628@example.com"
+  },
+  {
+    "board_id": 41,
+    "create_date": "2025-11-16T05:51:12.727Z",
+    "title": "이호테우 등대 화장실 세면대 물 안나옴 ㅡㅡ",
+    "content": "손 씻으려는데 물 한 방울도 안 나옴 고장난듯",
+    "data_cd": "PT0385",
+    "member_id": "LOCAL_user688@example.com"
+  },
+  {
+    "board_id": 40,
+    "create_date": "2025-11-14T16:37:04.668Z",
+    "title": "서귀포 매일올레시장 화장실 라디오에서 트로트 나옴 ㅋㅋㅋ",
+    "content": "볼일 보는데 내 나이가 어때서 나옴 흥얼거리면서 쌈",
+    "data_cd": "PT0220",
+    "member_id": "LOCAL_user224@example.com"
+  },
+  {
+    "board_id": 39,
+    "create_date": "2025-11-13T19:09:55.996Z",
+    "title": "애월 해안도로 화장실 뷰가 무슨 오션뷰 카페임?",
+    "content": "볼일 보는데 파도 소리 들림 ㅋㅋㅋ 힐링 스팟 인정",
+    "data_cd": "PT0259",
+    "member_id": "LOCAL_user201@example.com"
+  },
+  {
+    "board_id": 38,
+    "create_date": "2025-11-13T07:09:34.401Z",
+    "title": "화장실에 우산 두고 옴 ㅠㅠ",
+    "content": "다시 갔는데 없음... 내 우산 가져간 놈 잘 먹고 잘 살아라",
+    "data_cd": "PT0138",
+    "member_id": "LOCAL_user1015@example.com"
+  },
+  {
+    "board_id": 37,
+    "create_date": "2025-11-13T00:46:51.624Z",
+    "title": "탑동 광장 화장실 흡연충들아 담배 좀 피지마라",
+    "content": "들어갔다가 담배 냄새 때문에 질식할 뻔 매너 좀 지키자",
+    "data_cd": "PT0382",
+    "member_id": "LOCAL_user1067@example.com"
+  },
+  {
+    "board_id": 36,
+    "create_date": "2025-11-12T08:24:27.372Z",
+    "title": "탑동 공원 남자 화장실 소변기 상태 왜이럼?",
+    "content": "물 안 내려가서 찌린내 진동함... 관리 좀 해라",
+    "data_cd": "PT0417",
+    "member_id": "LOCAL_user95@example.com"
+  },
+  {
+    "board_id": 35,
+    "create_date": "2025-11-12T00:48:33.430Z",
+    "title": "기저귀 교환대 있는 곳 찾았다 휴",
+    "content": "애기 데리고 여행하기 힘들다... 여기 시설 좋음",
+    "data_cd": "PT0383",
+    "member_id": "LOCAL_user853@example.com"
+  },
+  {
+    "board_id": 34,
+    "create_date": "2025-11-11T02:17:20.176Z",
+    "title": "화장실 칸막이 너무 낮아서 눈 마주침",
+    "content": "옆 칸 사람이랑 인사할 뻔 민망하다 진짜",
+    "data_cd": "PT0092",
+    "member_id": "LOCAL_user1339@example.com"
+  },
+  {
+    "board_id": 33,
+    "create_date": "2025-11-09T10:16:56.618Z",
+    "title": "안돌오름 화장실 폼 미쳤다 ㅋㅋㅋ",
+    "content": "들어갔는데 클래식 나오고 향기남;; 우리집보다 좋음 ㄹㅇ",
+    "data_cd": "PT0217",
+    "member_id": "LOCAL_user1343@example.com"
+  },
+  {
+    "board_id": 32,
+    "create_date": "2025-11-08T23:28:14.275Z",
+    "title": "도두봉 근처 화장실 절대 가지마라;;",
+    "content": "냄새 진짜 선넘음 헛구역질 나옴 비위 약하면 딴데 가셈",
+    "data_cd": "PT0222",
+    "member_id": "LOCAL_user1027@example.com"
+  },
+  {
+    "board_id": 31,
+    "create_date": "2025-11-08T12:02:33.271Z",
+    "title": "올레길 걷다가 지옥을 맛봄",
+    "content": "주변에 화장실 1도 없음... 미리미리 다녀와라",
+    "data_cd": "PT0394",
+    "member_id": "LOCAL_user1254@example.com"
+  },
+  {
+    "board_id": 30,
+    "create_date": "2025-11-08T00:24:19.174Z",
+    "title": "비데 물살 너무 쎄서 관장 당함",
+    "content": "약으로 해도 뚫고 들어올 기세임 조절 잘해라",
+    "data_cd": "PT0391",
+    "member_id": "LOCAL_user401@example.com"
+  },
+  {
+    "board_id": 29,
+    "create_date": "2025-11-07T00:30:50.773Z",
+    "title": "동문시장 여자 화장실 줄 개김 주의",
+    "content": "주말이라 그런가 20분 기다림... 급하면 딴 데 가라",
+    "data_cd": "PT0282",
+    "member_id": "LOCAL_user826@example.com"
+  },
+  {
+    "board_id": 28,
+    "create_date": "2025-11-06T18:46:55.674Z",
+    "title": "제주공항 1층 화장실 에어컨 24시간 풀가동임?",
+    "content": "여름에 더위 피하러 여기로 피신옴 ㅋㅋㅋ 개꿀",
+    "data_cd": "PT0251",
+    "member_id": "LOCAL_user287@example.com"
+  },
+  {
+    "board_id": 27,
+    "create_date": "2025-11-03T01:00:47.535Z",
+    "title": "화장실에서 이상한 소리 들림",
+    "content": "꾸르륵 쾅쾅 전쟁난 줄... 누구냐 장건강 챙겨라",
+    "data_cd": "PT0232",
+    "member_id": "LOCAL_user353@example.com"
+  },
+  {
+    "board_id": 26,
+    "create_date": "2025-11-02T08:02:08.908Z",
+    "title": "휴지 훔쳐가는 도둑놈들 뭐냐",
+    "content": "공용 물품인데 집에 가져가서 뭐하게 그지냐?",
+    "data_cd": "PT0347",
+    "member_id": "LOCAL_user1156@example.com"
+  },
+  {
+    "board_id": 25,
+    "create_date": "2025-11-01T19:40:21.536Z",
+    "title": "급해서 남자화장실 들어간 썰 푼다",
+    "content": "아무도 없어서 다행이지 마주쳤으면 경찰서 갈 뻔",
+    "data_cd": "PT0129",
+    "member_id": "LOCAL_user946@example.com"
+  },
+  {
+    "board_id": 24,
+    "create_date": "2025-11-01T05:40:05.489Z",
+    "title": "가방 걸이 없어서 입에 물고 쌈",
+    "content": "바닥에 두긴 싫고... 옷걸이 하나만 달아주라 좀",
+    "data_cd": "PT0179",
+    "member_id": "LOCAL_user128@example.com"
+  },
+  {
+    "board_id": 23,
+    "create_date": "2025-10-30T23:30:09.971Z",
+    "title": "급똥쟁이들아 노형 오거리 근처면 여기 꼭 기억해라",
+    "content": "개방화장실인데 관리 개잘되어있음. 비데도 있다.",
+    "data_cd": "PT0208",
+    "member_id": "LOCAL_user509@example.com"
+  },
+  {
+    "board_id": 22,
+    "create_date": "2025-10-29T18:42:04.154Z",
+    "title": "천지연 폭포 화장실 휴지 자판기 고장남 ㅋㅋㅋ",
+    "content": "동전 먹튀 당함... 천원 기부했다 셈 친다",
+    "data_cd": "PT0102",
+    "member_id": "LOCAL_user72@example.com"
+  },
+  {
+    "board_id": 21,
+    "create_date": "2025-10-29T11:27:33.174Z",
+    "title": "편의점 화장실 열쇠 받아가야됨",
+    "content": "알바생 눈치 보임... 물건 하나 사면서 물어봐라",
+    "data_cd": "PT0086",
+    "member_id": "LOCAL_user52@example.com"
+  },
+  {
+    "board_id": 20,
+    "create_date": "2025-10-26T07:02:36.545Z",
+    "title": "와 폰 두고 나왔는데 아직 있네",
+    "content": "한국 치안 클라스 ㅋㅋㅋ 30분 뒤에 갔는데 그대로 있음",
+    "data_cd": "PT0343",
+    "member_id": "LOCAL_user1439@example.com"
+  },
+  {
+    "board_id": 19,
+    "create_date": "2025-10-24T10:35:23.364Z",
+    "title": "공중화장실에서 칫솔질 좀 하지마라",
+    "content": "거울에 다 튀고 난리남 집 가서 닦아라 좀",
+    "data_cd": "PT0160",
+    "member_id": "LOCAL_user1438@example.com"
+  },
+  {
+    "board_id": 18,
+    "create_date": "2025-10-24T10:31:32.624Z",
+    "title": "한라산 어리목 화장실 찬물만 나와서 손 얼어 터지는 줄",
+    "content": "겨울엔 온수 좀 틀어주라 인간적으로",
+    "data_cd": "PT0055",
+    "member_id": "LOCAL_user180@example.com"
+  },
+  {
+    "board_id": 17,
+    "create_date": "2025-10-24T03:58:56.831Z",
+    "title": "화장실 낙서 보는 재미 쏠쏠하네",
+    "content": "철수♡영희 언제적 감성이냐 ㅋㅋㅋ 추억 돋네",
+    "data_cd": "PT0368",
+    "member_id": "LOCAL_user1128@example.com"
+  },
+  {
+    "board_id": 16,
+    "create_date": "2025-10-23T05:50:38.711Z",
+    "title": "화장실 문 안 열려서 갇힐 뻔함",
+    "content": "식은땀 줄줄... 발로 차서 겨우 나옴 폰 꼭 챙겨가라",
+    "data_cd": "PT0088",
+    "member_id": "LOCAL_user623@example.com"
+  },
+  {
+    "board_id": 15,
+    "create_date": "2025-10-21T22:20:48.171Z",
+    "title": "화장실 세면대 거울 너무 높음",
+    "content": "키 작은 사람은 정수리만 보임 180 이상만 오라는 거냐",
+    "data_cd": "PT0246",
+    "member_id": "LOCAL_user874@example.com"
+  },
+  {
+    "board_id": 14,
+    "create_date": "2025-10-21T02:14:30.555Z",
+    "title": "제주도민 픽 화장실 리스트 푼다",
+    "content": "뻥임",
+    "data_cd": "PT0123",
+    "member_id": "LOCAL_user1139@example.com"
+  },
+  {
+    "board_id": 13,
+    "create_date": "2025-10-19T02:18:16.404Z",
+    "title": "화장실 물내림 버튼 어디있는지 한참 찾음",
+    "content": "요즘엔 발로 밟는 게 대세냐? 촌놈이라 몰랐다",
+    "data_cd": "PT0399",
+    "member_id": "LOCAL_user431@example.com"
+  },
+  {
+    "board_id": 12,
+    "create_date": "2025-10-18T09:59:06.739Z",
+    "title": "화장실 휴지 삼각형으로 접어놓음",
+    "content": "호텔이냐고",
+    "data_cd": "PT0413",
+    "member_id": "LOCAL_user330@example.com"
+  },
+  {
+    "board_id": 11,
+    "create_date": "2025-10-17T11:51:03.613Z",
+    "title": "오설록 티뮤지엄 화장실 가글 기계 있음 대박",
+    "content": "입 텁텁했는데 개운함 데이트 전에 들러라",
+    "data_cd": "PT0335",
+    "member_id": "LOCAL_user1282@example.com"
+  },
+  {
+    "board_id": 10,
+    "create_date": "2025-10-16T21:10:37.401Z",
+    "title": "제주 도립 미술관 화장실 휴지 2겹이라 좋음",
+    "content": "1겹짜리는 닦아도 닦은 거 같지 않은데 여긴 혜자네",
+    "data_cd": "PT0378",
+    "member_id": "LOCAL_user573@example.com"
+  },
+  {
+    "board_id": 9,
+    "create_date": "2025-10-16T15:20:16.255Z",
+    "title": "제주 드림타워 화장실 와 스타벅스 화장실인줄",
+    "content": "인테리어 개이쁨 조명 맛집임 여기서 살고싶다",
+    "data_cd": "PT0129",
+    "member_id": "LOCAL_user747@example.com"
+  },
+  {
+    "board_id": 8,
+    "create_date": "2025-10-14T11:52:36.316Z",
+    "title": "도서관 화장실 공부하는 사람 있음?",
+    "content": "안에서 책 읽는 소리 남 독서실인줄",
+    "data_cd": "PT0056",
+    "member_id": "LOCAL_user1028@example.com"
+  },
+  {
+    "board_id": 7,
+    "create_date": "2025-10-12T14:11:21.130Z",
+    "title": "사라봉 공원 화장실 가려면 등산해야됨",
+    "content": "계단 개많음 급똥일 땐 절대 못 감 무릎 나갈듯",
+    "data_cd": "PT0387",
+    "member_id": "LOCAL_user1302@example.com"
+  },
+  {
+    "board_id": 6,
+    "create_date": "2025-10-12T13:09:55.404Z",
+    "title": "제주대학교 구관 화장실 귀신 괴담 아는 사람?",
+    "content": "밤 12시에 3번째 칸 들어가면 소리 들린다는데 ㄹㅇ?",
+    "data_cd": "PT0258",
+    "member_id": "LOCAL_user796@example.com"
+  },
+  {
+    "board_id": 5,
+    "create_date": "2025-10-11T14:14:48.443Z",
+    "title": "손 건조기 밑에 물 흥건함",
+    "content": "미끄러져서 머리 깨질 뻔 조심해라",
+    "data_cd": "PT0344",
+    "member_id": "LOCAL_user100@example.com"
+  },
+  {
+    "board_id": 4,
+    "create_date": "2025-10-11T06:25:36.304Z",
+    "title": "제주 민속 오일장 화장실 에어컨 고장남 찜통임",
+    "content": "땀 흘리면서 쌈 사우나 온 줄 살 빠지는 기분",
+    "data_cd": "PT0096",
+    "member_id": "LOCAL_user155@example.com"
+  },
+  {
+    "board_id": 3,
+    "create_date": "2025-10-11T03:07:41.842Z",
+    "title": "화장실 문 잠금장치 고장남 조심",
+    "content": "볼일 보는데 누가 문 열어서 아이컨택함 죽고싶다",
+    "data_cd": "PT0215",
+    "member_id": "LOCAL_user1231@example.com"
+  },
+  {
+    "board_id": 2,
+    "create_date": "2025-10-11T02:31:19.902Z",
+    "title": "제주항 여객터미널 화장실 변기 막힘 자주 일어남?",
+    "content": "물 내리기 무섭다 역류할까봐 조마조마함",
+    "data_cd": "PT0367",
+    "member_id": "LOCAL_user132@example.com"
+  },
+  {
+    "board_id": 1,
+    "create_date": "2025-10-10T16:58:29.749Z",
+    "title": "한라 수목원 화장실 물 내리는 소리 개큼",
+    "content": "폭포수 떨어지는 줄 깜짝 놀람 심약자 주의",
+    "data_cd": "PT0374",
+    "member_id": "LOCAL_user191@example.com"
+  }
+]
