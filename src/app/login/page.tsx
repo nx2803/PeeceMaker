@@ -2,8 +2,7 @@
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { BsGoogle } from "react-icons/bs";
-import { SiKakaotalk } from "react-icons/si";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 import { useTheme } from "next-themes";
 import { createClient } from "@/utils/supabase/client";
 
@@ -82,7 +81,7 @@ export default function LoginPage() {
 
   // };
 
-  const handleSocialLogin = async (provider: 'google' | 'kakao') => {
+  const handleSocialLogin = async (provider: 'google' | 'github') => {
     localStorage.setItem("just_logged_in", "true");
     const { error } = await supabase.auth.signInWithOAuth({
       provider: provider as any,
@@ -178,9 +177,9 @@ export default function LoginPage() {
               <button type="button" onClick={() => handleSocialLogin('google')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
                 <span className="text-2xl text-blue-600"><BsGoogle /></span>
               </button>
-              {/* 카카오 */}
-              <button type="button" onClick={() => handleSocialLogin('kakao' as any)} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
-                <span className="text-3xl text-[#3A1D1D]"><SiKakaotalk /></span>
+              {/* 깃허브 */}
+              <button type="button" onClick={() => handleSocialLogin('github')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
+                <span className="text-3xl text-black dark:text-white"><BsGithub /></span>
               </button>
             </motion.div>
           </form>

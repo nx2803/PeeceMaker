@@ -27,7 +27,7 @@
 <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white"/> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white"/>
 
 ### 🔐 Authentication & API
-<img src="https://img.shields.io/badge/Kakao_Map_API-FFCD00?style=flat-square&logo=kakaotalk&logoColor=black"/> <img src="https://img.shields.io/badge/Google_OAuth-4285F4?style=flat-square&logo=google&logoColor=white"/> <img src="https://img.shields.io/badge/Kakao_OAuth-FFCD00?style=flat-square&logo=kakaotalk&logoColor=black"/>
+<img src="https://img.shields.io/badge/Kakao_Map_API-FFCD00?style=flat-square&logo=kakaotalk&logoColor=black"/> <img src="https://img.shields.io/badge/Google_OAuth-4285F4?style=flat-square&logo=google&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub_OAuth-181717?style=flat-square&logo=github&logoColor=white"/>
 
 <br/>
 
@@ -64,7 +64,7 @@
 ### 4. 💬 커뮤니티 게시판 (Community Board)
 - **유기적인 정보 공유**: 제주 화장실 이용 경험, 꿀팁, 경고(고장, 청결 불량 등)를 실시간으로 공유하는 채널.
 - **안전한 풀 CRUD**: Supabase RLS(Row Level Security) 정책이 적용된 게시글/댓글 작성, 조회, 수정 및 삭제 기능.
-- **OAuth2 소셜 로그인**: 구글 및 카카오 계정을 활용한 원클릭 로그인 시스템(`Supabase Auth`) 구현.
+- **OAuth2 소셜 로그인**: 구글 및 깃허브 계정을 활용한 원클릭 로그인 시스템(`Supabase Auth`) 구현.
 
 <br/>
 
