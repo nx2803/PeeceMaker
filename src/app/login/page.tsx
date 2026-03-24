@@ -3,7 +3,7 @@ import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
-import { SiNaver } from "react-icons/si";
+import { SiKakaotalk } from "react-icons/si";
 import { useTheme } from "next-themes";
 import { createClient } from "@/utils/supabase/client";
 
@@ -82,7 +82,7 @@ export default function LoginPage() {
 
   // };
 
-  const handleSocialLogin = async (provider: 'google' | 'naver') => {
+  const handleSocialLogin = async (provider: 'google' | 'kakao') => {
     localStorage.setItem("just_logged_in", "true");
     const { error } = await supabase.auth.signInWithOAuth({
       provider: provider as any,
@@ -178,9 +178,9 @@ export default function LoginPage() {
               <button type="button" onClick={() => handleSocialLogin('google')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
                 <span className="text-2xl text-blue-600"><BsGoogle /></span>
               </button>
-              {/* 네이버 */}
-              <button type="button" onClick={() => handleSocialLogin('naver')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
-                <span className="text-2xl text-green-500"><SiNaver /></span>
+              {/* 카카오 */}
+              <button type="button" onClick={() => handleSocialLogin('kakao' as any)} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
+                <span className="text-3xl text-[#3A1D1D]"><SiKakaotalk /></span>
               </button>
             </motion.div>
           </form>

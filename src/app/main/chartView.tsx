@@ -150,7 +150,7 @@ export default function ChartView() {
                 <span className={`text-xl font-black shrink-0 w-8 ${type === 'top' ? 'text-emerald-400' : 'text-red-400'}`}>
                     {index + 1}
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="h-100 w-full">
                     <h4 className="font-bold text-slate-800 dark:text-white text-base md:text-lg truncate block" title={item.name}>
                         {item.name}
                     </h4>
@@ -230,7 +230,7 @@ export default function ChartView() {
 
 
                     {/* 지역별 분포 */}
-                    <motion.div layout className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-xl shadow-2xl h-[400px] flex flex-col dark:bg-zinc-600/30 dark:border-zinc-400/10">
+                    <motion.div layout className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-xl shadow-2xl h-100 flex flex-col dark:bg-zinc-600/30 dark:border-zinc-400/10">
                         <h3 className="text-xl font-black mb-6 uppercase tracking-tight">
                             지역별 분포
                         </h3>
@@ -253,7 +253,7 @@ export default function ChartView() {
                     </motion.div>
 
                     {/* 남녀 변기 비율 */}
-                    <motion.div layout className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-2xl shadow-2xl h-[400px] flex flex-col dark:bg-zinc-600/30 dark:border-zinc-400/10">
+                    <motion.div layout className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-2xl shadow-2xl h-100 flex flex-col dark:bg-zinc-600/30 dark:border-zinc-400/10">
                         <h3 className="text-xl font-black mb-6 uppercase tracking-tight">
                             남녀 수용력
                         </h3>
