@@ -1,16 +1,7 @@
 <div align="center">
   
 # 🚽 PEECE MAKER (피스메이커)
-**"THE GUARDIAN OF YOUR PRESTIGE"**<br/>
-*당신이 평생 지켜온 사회적 지위를 수호할 위대한 작전*
-
-[![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![React 19](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-
-**PEECE MAKER**는 아름다운 제주도를 여행하는 여행객들의 예기치 못한 생리적 위협으로부터 사회적 지위를 지켜주기 위해 탄생한 **제주도 공중화장실 위치 탐색 및 커뮤니티 플랫폼**입니다. 제주도 내 공중화장실의 접근성과 안전성을 높이고, 이용자들이 최신 상태를 공유하는 활발한 커뮤니티를 조성하는 것을 목표로 합니다.
+**PEECE MAKER**는 제주도 여행객과 도민을 위한 **제주시 공중화장실 위치 탐색 및 커뮤니티 플랫폼**입니다. 제주시 내 공중화장실의 위치와 편의시설 정보를 직관적으로 제공하고, 이용자들이 리뷰를 공유할 수 있는 커뮤니티 조성을 목표로 합니다.
 
 [🎬 시연 영상 보기 (Google Drive)](https://drive.google.com/file/d/13tFW-Ujd-TiHFeiQlXoA7XbLkdLOUBF5/view?usp=drive_link)
 </div>
@@ -21,7 +12,7 @@
 
 ### 🎨 Frontend
 <img src="https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=next.js&logoColor=white"/> <img src="https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB"/> <img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white"/>
-<img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white"/> <img src="https://img.shields.io/badge/Recharts-34A853?style=flat-square&logo=react&logoColor=white"/>
+<img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white"/> <img src="https://img.shields.io/badge/Recharts-34A853?style=flat-square&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/React_Query-FF4154?style=flat-square&logo=reactquery&logoColor=white"/> <img src="https://img.shields.io/badge/Lucide_React-F472B6?style=flat-square&logo=lucide&logoColor=white"/>
 
 ### 🗄️ Database (BaaS)
 <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white"/> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white"/>
@@ -31,40 +22,97 @@
 
 <br/>
 
-## ☁️ 아키텍처 (Serverless Architecture)
+## ☁️ 아키텍처 및 데이터베이스 흐름 (Architecture & DB Flow)
 
-본 서비스는 물리적인 서버 인프라를 직접 운용하지 않는 **Serverless + BaaS(Backend as a Service)** 아키텍처로 구성되어 있습니다.
+본 서비스는 물리적인 서버 인프라를 직접 운용하지 않는 **Serverless + BaaS(Backend as a Service)** 아키텍처로 구성되어 있으며, 최신 웹 개발 패러다임을 따라 데이터 로딩 및 상태 관리를 최적화했습니다.
 
-- **Vercel (Serverless Edge)**: `Next.js` 애플리케이션의 호스팅을 담당하며, 사용자 요청 시에만 실행되는 서버리스 함수(Serverless Functions)를 통해 인터랙티브 UI와 API 라우트를 처리합니다.
-- **Supabase (BaaS)**: 백엔드 인프라 역할을 수행하며, `PostgreSQL` 기반의 클라우드 데이터베이스 스토리지, 사용자 인증(OAuth), 그리고 Row Level Security(RLS)를 통한 데이터 보안 및 접근 제어를 관리합니다.
+- **Vercel (Serverless Edge)**: `Next.js` 애플리케이션의 호스팅 및 서버 사이드 렌더링(SSR)을 담당하며, 사용자 요청 시에만 실행되는 서버리스 함수(Serverless Functions)를 통해 인터랙티브 UI와 API 라우트를 처리합니다.
+- **Supabase (PostgreSQL BaaS)**:
+  - **데이터베이스 (PostgreSQL)**: 제주도 공중화장실 좌표 및 부가 정보 데이터를 안전한 관계형 테이블 구조로 구축하여 지연 시간 없이 브라우저 지도로 전달합니다.
+  - **인증 (Authentication)**: 구글, 깃허브 기반의 OAuth 접근을 관리하며 쿠키를 기반으로 SSR에서도 끊김 없는 사용자 세션 유지 기능을 제공합니다.
+  - **보안 (Row Level Security)**: RLS(행 수준 보안) 정책이 부여되어 커뮤니티 게시판의 악의적인 접근을 완벽히 차단하며, 인가된 작성자 본인만이 자신의 게시글 및 댓글을 삭제/수정할 수 있도록 데이터베이스 단에서 통제합니다.
+- **TanStack React Query**: 클라이언트 사이드에서 상태 관리를 전담하며, 게시글 무한 스크롤 및 데이터 캐싱을 통해 DB 호출을 최적화하고 속도를 향상시킵니다.
 
 <br/>
 
-## ✨ 핵심 기능 (The Key Functions)
+## 🗂️ 데이터베이스 구조 (ERD)
 
-### 1. 🛫 랜딩 페이지 (Landing Page)
-- **몰입감 있는 인트로**: 아름다운 제주 풍경 영상과 `Framer Motion`을 활용한 부드러운 텍스트 애니메이션이 적용되어 사용자의 이목을 끕니다.
-- **서비스 직관성**: 서비스의 주요 기능(Map, Chart, Board)과 신뢰할 수 있는 데이터 출처(제주시 공공데이터)를 명확히 안내합니다.
+Supabase(PostgreSQL) 기반의 관계형 데이터베이스 구조입니다.
 
-### 2. 🗺️ 화장실 지도 (Toilet Map)
-- **위치 기반 실시간 탐색**: `Kakao Map API`를 연동하여 사용자의 현재 위치를 기반으로 주변 화장실 마커를 즉시 렌더링합니다.
-- **스마트 필터링 시스템**:
-  - `안심 시설`: 비상벨, CCTV 여부
-  - `편의 시설`: 장애인 전용칸, 기저귀 교환대 보유 여부
-  - `성별 구분`: 남/여 화장실 칸 수 세부 정보
-- **상세 정보 및 리뷰 팝업**: 마커 클릭 시 화장실 상세 정보와 실사용자들의 생생한 리뷰/별점을 확인할 수 있는 인터랙티브 팝업 제공.
+```mermaid
+erDiagram
+    member_profile ||--o{ board : "writes"
+    member_profile ||--o{ comment : "writes"
+    board ||--o{ comment : "has"
 
-### 3. 📊 통계 대시보드 (Statistics Dashboard)
-- **데이터 시각화**: `Recharts` 라이브러리를 통해 방대한 데이타를 한눈에 들어오는 차트로 제공.
-  - **지역별 분포 (BarChart)**: 제주시 내 읍/면/동 단위 화장실 개수 시각화.
-  - **수용력 분석 (PieChart)**: 전체 대비 성별/시설별 비율 분포 확인.
-- **실시간 데이터 바인딩**: 전체/안심/장애인/유아 필터 클릭 시 즉시 차트가 애니메이션과 함께 업데이트됩니다.
-- **테마 최적화**: 사용자의 시스템 설정에 맞춘 다크/라이트 모드 UI 자동 전환을 지원합니다.
+    member_profile {
+        uuid member_id PK
+        string username
+        string nickname
+        string name
+    }
 
-### 4. 💬 커뮤니티 게시판 (Community Board)
-- **유기적인 정보 공유**: 제주 화장실 이용 경험, 꿀팁, 경고(고장, 청결 불량 등)를 실시간으로 공유하는 채널.
-- **안전한 풀 CRUD**: Supabase RLS(Row Level Security) 정책이 적용된 게시글/댓글 작성, 조회, 수정 및 삭제 기능.
-- **OAuth2 소셜 로그인**: 구글 및 깃허브 계정을 활용한 원클릭 로그인 시스템(`Supabase Auth`) 구현.
+    toilet_info {
+        string data_cd PK "화장실 고유 번호"
+        string toilet_nm "화장실명"
+        float la_crdnt "위도"
+        float lo_crdnt "경도"
+        int male_closet_cnt "남성 대변기 수"
+        int female_closet_cnt "여성 대변기 수"
+        string diaper_exhg_tabl_yn "기저귀 교환대 유무"
+    }
+
+    board {
+        int board_id PK
+        uuid member_id FK
+        string title
+        text content
+        timestamp create_date
+    }
+
+    comment {
+        int id PK
+        int board_id FK
+        uuid member_id FK
+        text content
+        timestamp create_date
+    }
+```
+
+<br/>
+
+## ✨ 핵심 서비스 기능 (Key Features)
+
+- **화장실 지도 (Toilet Map)**: 카카오맵을 기반으로 사용자 주변의 공중화장실 위치를 실시간으로 탐색하며, 안심시설 및 편의시설 조건별 스마트 필터링을 지원합니다.
+- **통계 대시보드 (Data Dashboard)**: 제주시 공공데이터를 시각화하여 읍/면/동별 화장실 분포 및 편의시설 수용력 현황을 반응형 차트(Recharts)로 제공합니다.
+- **커뮤니티 게시판 (Community Board)**: 여행객과 도민이 화장실 이용 꿀팁이나 청결 상태 등 현장 정보를 실시간으로 공유하고 소통할 수 있는 공간입니다.
+- **소셜 로그인 (OAuth)**: 로컬 로그인과 함께 별도의 복잡한 절차 없이 구글 및 깃허브 계정을 통한 빠른 회원가입 및 안전한 인증 환경을 제공합니다.
+
+<br/>
+
+## 💡 주요 기술 도입 배경 (Tech Stack & Background)
+
+본 프로젝트는 최신 React 생태계를 적극 활용하여 구축되었으며, 클라이언트 성능 최적화와 개발 생산성을 고려하여 기술 스택을 선정했습니다.
+
+### 1. 전역 상태 및 데이터 패칭 (TanStack React Query)
+- **도입 배경**: 게시판 목록, 화장실 정보 등 비동기 조회 위주의 데이터가 빈번하게 요청됩니다. 불필요한 중복 호출을 줄이고 데이터 최신화를 효율적으로 관리할 필요가 있었습니다.
+- **적용 결과**: 데이터 캐싱을 통해 지도 필터링이나 페이지 이동 시 발생하는 대기 시간을 없앴으며, 커뮤니티 게시판의 동적인 렌더링 속도를 크게 향상시켰습니다.
+
+### 2. 대량의 DOM 렌더링 최적화 (Kakao Map Clusterer)
+- **도입 배경**: 수천 개의 화장실 위치 마커를 지도 상에 한 번에 렌더링할 경우, 브라우저 메모리 점유율이 높아지고 드래그 성능이 저하되는 이슈가 있습니다.
+- **적용 결과**: `react-kakao-maps-sdk`의 `MarkerClusterer`를 도입하여 지도 축척(Zoom) 레벨에 따라 인접한 마커들을 동적으로 그룹화했습니다. 이를 통해 DOM 병목을 해소하고 원활한 지도 탐색이 가능해졌습니다.
+
+### 3. 서버리스 데이터베이스 및 보안 제어 (Supabase RLS)
+- **도입 배경**: 별도의 서버 구축 없이 사용자 인증과 관계형 DB(PostgreSQL)를 연동하고, 동시에 데이터 접근 권한을 안전하게 통제해야 했습니다.
+- **적용 결과**: Google, GitHub 기반의 OAuth 소셜 로그인을 구축했습니다. 특히 **RLS(Row Level Security)** 정책을 데이터베이스에 거울처럼 적용하여, 클라이언트에서 API를 강제 변조하더라도 작성자 본인이 아니면 게시글이나 댓글을 수정/삭제할 수 없도록 원천 차단했습니다.
+
+### 4. 데이터 시각화 (Recharts)
+- **도입 배경**: 행정명/수용량 단위의 정적인 텍스트 데이터를 사용자가 직관적으로 이해할 수 있는 통계 화면으로 변환하고자 했습니다.
+- **적용 결과**: React에 최적화된 SVG 기반 차트 라이브러리인 `Recharts`를 도입해, 안심/편의시설 필터링 조작 즉시 애니메이션과 함께 차트가 재계산되는 대시보드를 구축했습니다.
+
+### 5. 선언적 애니메이션 (Framer Motion)
+- **도입 배경**: 사용자의 액션(팝업 트리거, 탭 전환)에 즉각적인 피드백을 주고 화면 전환 간의 맥락을 부드럽게 이어줄 장치가 필요했습니다.
+- **적용 결과**: React 컴포넌트 생명주기와 완벽하게 호환되는 `Framer Motion`(`AnimatePresence`)을 활용해 리스트 언마운트 시의 자연스러운 페이드아웃 효과 등을 구현했습니다.
 
 <br/>
 

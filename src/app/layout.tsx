@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Chiron_GoRound_TC } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
-const chiron = Chiron_GoRound_TC({
-  weight: "400",
-  variable: "--font-chiron",
-  subsets: [],
+const noto = Noto_Sans_KR({
+  weight: ["400", "500", "700"],
+  variable: "--font-noto",
   display: 'swap',
-  preload: false,
-  fallback: ["sans-serif"],
 })
 
 export const metadata: Metadata = {
@@ -32,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
-        className={`${chiron.className} ${chiron.variable} antialiased`}
+        className={`${noto.variable} ${noto.className} antialiased`}
       >
         <Providers>{children}</Providers>
       </body>
