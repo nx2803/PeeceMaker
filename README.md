@@ -31,7 +31,7 @@
   - **데이터베이스 (PostgreSQL)**: 제주도 공중화장실 좌표 및 부가 정보 데이터를 안전한 관계형 테이블 구조로 구축하여 지연 시간 없이 브라우저 지도로 전달합니다.
   - **인증 (Authentication)**: 구글, 깃허브 기반의 OAuth 접근을 관리하며 쿠키를 기반으로 SSR에서도 끊김 없는 사용자 세션 유지 기능을 제공합니다.
   - **보안 (Row Level Security)**: RLS(행 수준 보안) 정책이 부여되어 커뮤니티 게시판의 악의적인 접근을 완벽히 차단하며, 인가된 작성자 본인만이 자신의 게시글 및 댓글을 삭제/수정할 수 있도록 데이터베이스 단에서 통제합니다.
-- **TanStack React Query**: 클라이언트 사이드에서 상태 관리를 전담하며, 게시글 무한 스크롤 및 데이터 캐싱을 통해 DB 호출을 최적화하고 속도를 향상시킵니다.
+- **TanStack React Query**: 클라이언트 사이드에서 상태 관리를 전담하며, 데이터 캐싱을 통해 DB 호출을 최적화하고 속도를 향상시킵니다.
 
 <br/>
 
@@ -41,41 +41,54 @@ Supabase(PostgreSQL) 기반의 관계형 데이터베이스 구조입니다.
 
 ```mermaid
 erDiagram
-    member_profile ||--o{ board : "writes"
-    member_profile ||--o{ comment : "writes"
+    member ||--o{ board : "writes"
+    member ||--o{ comment : "writes"
+    member ||--o{ review : "writes"
     board ||--o{ comment : "has"
+    toilet_info ||--o{ review : "has"
 
-    member_profile {
-        uuid member_id PK
-        string username
-        string nickname
-        string name
+    member {
+        text member_id PK
+        text username
+        text nickname
+        text provider
+        text role
+        boolean enabled
     }
 
     toilet_info {
-        string data_cd PK "화장실 고유 번호"
-        string toilet_nm "화장실명"
+        text data_cd PK "화장실 고유 번호"
+        text toilet_nm "화장실명"
         float la_crdnt "위도"
         float lo_crdnt "경도"
-        int male_closet_cnt "남성 대변기 수"
-        int female_closet_cnt "여성 대변기 수"
-        string diaper_exhg_tabl_yn "기저귀 교환대 유무"
+        bigint male_closet_cnt "남성 대변기 수"
+        bigint female_closet_cnt "여성 대변기 수"
+        text diaper_exhg_tabl_yn "기저귀 교환대 유무"
     }
 
     board {
-        int board_id PK
-        uuid member_id FK
-        string title
+        bigint board_id PK
+        text member_id FK
+        text title
         text content
         timestamp create_date
     }
 
     comment {
-        int id PK
-        int board_id FK
-        uuid member_id FK
+        bigint comment_id PK
+        bigint board_id FK
+        text member_id FK
         text content
-        timestamp create_date
+        timestamp create_time
+    }
+
+    review {
+        bigint review_id PK
+        text data_cd FK
+        text member_id FK
+        text content
+        bigint point
+        text create_date
     }
 ```
 
@@ -154,6 +167,18 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key
 npm run dev
 ```
 브라우저에서 `http://localhost:3000`에 접속하여 서비스를 이용하실 수 있습니다!
+
+### 🐳 Docker를 이용한 배포 (Docker Deployment)
+**Docker Multi-stage 빌드**와 Next.js `standalone` 모드를 적용하여 컨테이너 이미지 용량을 최소화한 최적화 배포를 지원합니다.
+
+```bash
+# 1. 도커 이미지 빌드
+docker build -t peecemaker .
+
+# 2. 도커 컨테이너 실행 (환경변수 파일 포함)
+docker run -d -p 3000:3000 --env-file .env.local peecemaker
+```
+컨테이너가 실행되면 `http://localhost:3000`에서 프로덕션 최적화된 앱을 테스트 및 운영하실 수 있습니다.
 
 <br/>
 
