@@ -23,11 +23,20 @@
 <img src="https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=next.js&logoColor=white"/> <img src="https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB"/> <img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white"/>
 <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white"/> <img src="https://img.shields.io/badge/Recharts-34A853?style=flat-square&logo=react&logoColor=white"/>
 
-### 🗄️ Backend & Database (BaaS)
+### 🗄️ Database (BaaS)
 <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white"/> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white"/>
 
 ### 🔐 Authentication & API
 <img src="https://img.shields.io/badge/Kakao_Map_API-FFCD00?style=flat-square&logo=kakaotalk&logoColor=black"/> <img src="https://img.shields.io/badge/Google_OAuth-4285F4?style=flat-square&logo=google&logoColor=white"/> <img src="https://img.shields.io/badge/Kakao_OAuth-FFCD00?style=flat-square&logo=kakaotalk&logoColor=black"/>
+
+<br/>
+
+## ☁️ 아키텍처 (Serverless Architecture)
+
+본 서비스는 물리적인 서버 인프라를 직접 운용하지 않는 **Serverless + BaaS(Backend as a Service)** 아키텍처로 구성되어 있습니다.
+
+- **Vercel (Serverless Edge)**: `Next.js` 애플리케이션의 호스팅을 담당하며, 사용자 요청 시에만 실행되는 서버리스 함수(Serverless Functions)를 통해 인터랙티브 UI와 API 라우트를 처리합니다.
+- **Supabase (BaaS)**: 백엔드 인프라 역할을 수행하며, `PostgreSQL` 기반의 클라우드 데이터베이스 스토리지, 사용자 인증(OAuth), 그리고 Row Level Security(RLS)를 통한 데이터 보안 및 접근 제어를 관리합니다.
 
 <br/>
 
