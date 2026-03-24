@@ -3,14 +3,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { FaMapMarkedAlt, FaClipboardList, FaChartPie } from 'react-icons/fa';
+import { Map as MapIcon, ClipboardList, PieChart, Settings, Monitor, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import MapView from './mapView';
-import BoardView from './boardView';
-import ChartView from './chartView';
+import dynamic from 'next/dynamic';
+
+const MapView = dynamic(() => import('./mapView'), { ssr: false, loading: () => <div className="w-full h-full flex justify-center items-center text-orange-400 font-bold animate-pulse">Loading Map...</div> });
+const BoardView = dynamic(() => import('./boardView'), { ssr: false, loading: () => <div className="w-full h-full flex justify-center items-center text-orange-400 font-bold animate-pulse">Loading Board...</div> });
+const ChartView = dynamic(() => import('./chartView'), { ssr: false, loading: () => <div className="w-full h-full flex justify-center items-center text-orange-400 font-bold animate-pulse">Loading Chart...</div> });
 import { createClient } from '@/utils/supabase/client';
-import { IoMdSettings } from 'react-icons/io';
-import { MdComputer, MdDarkMode, MdLightMode } from 'react-icons/md';
 
 interface UserData {
 	nickname?: string;
@@ -147,15 +147,15 @@ export default function MainPage() {
 		return null;
 	}
 	const menuItems = [
-		{ icon: <FaMapMarkedAlt />, id: 0 },
-		{ icon: <FaChartPie />, id: 1 },
-		{ icon: <FaClipboardList />, id: 2 },
+		{ icon: <MapIcon />, id: 0 },
+		{ icon: <PieChart />, id: 1 },
+		{ icon: <ClipboardList />, id: 2 },
 	];
 
 	const themeItems = [
-		{ icon: <MdComputer />, value: 'system' },
-		{ icon: <MdLightMode />, value: 'light' },
-		{ icon: <MdDarkMode />, value: 'dark' },
+		{ icon: <Monitor />, value: 'system' },
+		{ icon: <Sun />, value: 'light' },
+		{ icon: <Moon />, value: 'dark' },
 	];
 
 	const renderContent = () => {
@@ -218,7 +218,7 @@ export default function MainPage() {
 				<div ref={menuRef} className='relative pointer-events-auto flex flex-col items-end'>
 					<button onClick={() => setIsMenuOpen(!isMenuOpen)} className='group relative px-6 py-3 md:px-10 md:py-5 bg-orange-400/85 backdrop-blur-md text-white font-[950] md:text-base tracking-widest uppercase rounded-full md:rounded-[40px] border border-white/20 shadow-lg hover:bg-orange-400/85 active:scale-95 transition-all cursor-pointer overflow-hidden flex flex-row justify-center items-center'>
 						{isLoggedIn && <p className='mr-3 text-2xl'>{userData?.nickname}</p>}
-						<IoMdSettings className='text-3xl' />
+						<Settings className='w-6 h-6 md:w-8 md:h-8' />
 					</button>
 
 					<AnimatePresence>

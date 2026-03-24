@@ -1,20 +1,23 @@
 "use client";
 
-import { motion, useScroll, Variants } from 'framer-motion';
-import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence, Variants } from 'framer-motion';
+import Image from "next/image";
+import React, { useRef, useState } from 'react';
 import { useRouter } from "next/navigation";
-import {
-    FaMapMarkedAlt, FaClipboardList, FaChartPie, FaCode, FaTerminal,
-    FaMapMarkerAlt, FaExternalLinkAlt, FaGithub
-} from "react-icons/fa";
-import { SiGoogle, SiNaver, SiNextdotjs, SiSpring, SiSpringboot } from "react-icons/si";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { VscVscode } from "react-icons/vsc";
-import { BiLogoPostgresql } from "react-icons/bi";
+import { 
+    Map as MapIcon, 
+    ClipboardList, 
+    PieChart, 
+    Terminal, 
+    MapPin, 
+    ExternalLink, 
+    ChevronDown
+} from "lucide-react";
 
 export default function Page() {
     const router = useRouter();
     const containerRef = useRef<HTMLElement>(null);
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
     const containerVars = {
         initial: { opacity: 0 },
@@ -42,15 +45,25 @@ export default function Page() {
                 style={{ scaleX: scrollYProgress }}
             />
 
-            <div className="fixed inset-0 z-0">
+            <div className="fixed inset-0 z-0 bg-black">
+                {/* LCP 최적화: video poster 속성 대신 next/image 미리 불러오기 우선순위 할당 */}
+                <Image 
+                    src="/jeju.png" 
+                    alt="Jeju Background" 
+                    fill 
+                    priority 
+                    quality={60} 
+                    className={`object-cover pointer-events-none transition-opacity duration-1000 z-10 ${isVideoLoaded ? 'opacity-0' : 'opacity-60'}`}
+                    sizes="100vw"
+                />
                 <video
                     autoPlay loop muted playsInline preload="auto"
-                    poster="/jeju.png"
-                    className="w-full h-full object-cover opacity-60"
+                    onCanPlay={() => setIsVideoLoaded(true)}
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
                 >
                     <source src="/jeju.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/80" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/80 z-20 pointer-events-none" />
             </div>
 
             <section className="relative z-20 min-h-screen w-full flex items-center justify-center">
@@ -99,13 +112,14 @@ export default function Page() {
                         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
                     >
                         <motion.div
-                            animate={{ opacity: [0.1, 0.5, 0.1] }}
+                            animate={{ opacity: [0.1, 0.5, 0.1], y: [0, 5, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             className="flex flex-col items-center gap-3"
                         >
                             <span className="text-white text-[11px] md:text-[13px] font-bold tracking-[1.2em] uppercase ml-[1.2em] whitespace-nowrap">
                                 DOWN TO DETAIL
                             </span>
+                            <ChevronDown className="text-white/50 w-6 h-6" />
                         </motion.div>
                     </motion.div>
                 </motion.div>
@@ -126,9 +140,9 @@ export default function Page() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
-                            { icon: <FaMapMarkedAlt />, title: "Toilet Map", desc: "카카오 맵 API를 통해 주변의 지도를 화면에 띄우고 주변의 화장실에 대한 정보와 위치를 가져와 마커로 띄워 보여줍니다. 마커를 클릭시 해당 화장실에 대한 상세 정보와 사용자들이 남긴 리뷰를 볼 수 있으며 리뷰 작성과 화장실 특성에 따른 필터링 기능이 제공됩니다." },
-                            { icon: <FaChartPie />, title: "Toilet Chart", desc: "Recharts 라이브러리를 활용해 시각화된 차트를 통해 화장실에 대한 여러 각종 통계들을 제공합니다. 통계로는 화장실이 많은 지역 순위, 남녀별 화장실 칸수, 리뷰 점수 상위 5등과 하위 5등을 볼 수 있습니다." },
-                            { icon: <FaClipboardList />, title: "Toilet Board", desc: "사용자들이 정보나 대화를 나눌 수 있는 커뮤니티 공간을 제공합니다. 글과 댓글을 작성할 수 있으며 수정 및 삭제도 가능합니다." }
+                            { icon: <MapIcon className="w-8 h-8" />, title: "Toilet Map", desc: "카카오 맵 API를 통해 주변의 지도를 화면에 띄우고 주변의 화장실에 대한 정보와 위치를 가져와 마커로 띄워 보여줍니다. 마커를 클릭시 해당 화장실에 대한 상세 정보와 사용자들이 남긴 리뷰를 볼 수 있으며 리뷰 작성과 화장실 특성에 따른 필터링 기능이 제공됩니다." },
+                            { icon: <PieChart className="w-8 h-8" />, title: "Toilet Chart", desc: "Recharts 라이브러리를 활용해 시각화된 차트를 통해 화장실에 대한 여러 각종 통계들을 제공합니다. 통계로는 화장실이 많은 지역 순위, 남녀별 화장실 칸수, 리뷰 점수 상위 5등과 하위 5등을 볼 수 있습니다." },
+                            { icon: <ClipboardList className="w-8 h-8" />, title: "Toilet Board", desc: "사용자들이 정보나 대화를 나눌 수 있는 커뮤니티 공간을 제공합니다. 글과 댓글을 작성할 수 있으며 수정 및 삭제도 가능합니다." }
                         ].map((page, idx) => (
                             <motion.div
                                 key={idx}
@@ -178,7 +192,7 @@ export default function Page() {
 
                             <div className="bg-zinc-900/20 rounded-[3rem] p-8 border border-white/5 space-y-6">
                                 <h4 className="text-orange-400 font-black tracking-widest uppercase text-xl flex items-center gap-2">
-                                    <FaTerminal /> Dataset Specifications
+                                    <Terminal className="w-6 h-6" /> Dataset Specifications
                                 </h4>
                                 <ul className="space-y-4">
                                     {[
@@ -199,7 +213,7 @@ export default function Page() {
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-3 w-full py-5 bg-orange-400 text-white font-[1000] rounded-2xl hover:bg-orange-500 transition-all group"
                                 >
-                                    데이터 확인 <FaExternalLinkAlt />
+                                    데이터 확인 <ExternalLink className="w-5 h-5" />
                                 </a>
                             </div>
                         </div>

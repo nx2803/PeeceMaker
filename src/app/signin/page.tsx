@@ -4,6 +4,8 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { toast } from "sonner";
+import { ArrowLeft } from "lucide-react";
 
 
 export default function signinPage() {
@@ -18,7 +20,7 @@ export default function signinPage() {
   const handleSignin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !password) {
-      alert("제대로 입력하세요");
+      toast.warning("모든 정보를 입력해주세요.");
       return;
     }
     setIsLoading(true);
@@ -34,14 +36,14 @@ export default function signinPage() {
       });
 
       if (!error) {
-        alert("가입 성공! 이메일 인증을 확인해주세요 (설정에 따라 다를 수 있음)");
+        toast.success("가입 성공! 이메일을 확인해 주세요.");
         router.push("/login");
       } else {
         console.error(error);
-        alert(`가입 실패: ${error.message}`);
+        toast.error(`가입 실패: ${error.message}`);
       }
     } catch (error) {
-      alert(`가입 실패`);
+      toast.error(`가입 도중 오류가 발생했습니다.`);
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -140,9 +142,10 @@ export default function signinPage() {
           <motion.div variants={itemVars} className="mt-12 flex flex-col items-center gap-6">
             <button
               onClick={() => router.back()}
-              className="text-[10px] font-bold text-slate-400 tracking-[0.5em] uppercase hover:text-orange-500 transition-colors"
+              className="flex items-center gap-1 text-[10px] font-bold text-slate-400 tracking-[0.5em] uppercase hover:text-orange-500 transition-colors"
             >
-              ← Return
+              <ArrowLeft className="w-3 h-3" />
+              Return
             </button>
           </motion.div>
 

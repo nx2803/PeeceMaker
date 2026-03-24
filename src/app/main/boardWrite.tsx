@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
-import { FaArrowLeft,  FaPaperPlane, } from "react-icons/fa";
+import { ArrowLeft, Send } from "lucide-react";
+import { toast } from "sonner";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createClient } from '@/utils/supabase/client';
 
 interface Board {
@@ -27,7 +29,41 @@ export default function BoardWrite({ onBack, onSuccess, mode = 'write', post, us
     const [content, setContent] = useState("");
     const isEditMode = mode === 'edit';
     const supabase = createClient();
+    const queryClient = useQueryClient();
 
+    const postMutation = useMutation({
+        mutationFn: async ({ title, content }: { title: string, content: string }) => {
+            if (isEditMode && post) {
+                const { error } = await supabase
+                    .from('board')
+                    .update({ title, content })
+                    .eq('board_id', post.boardId);
+                if (error) throw error;
+            } else {
+                if (!userData?.memberId) throw new Error("로그인 정보가 없습니다.");
+                const { error } = await supabase
+                    .from('board')
+                    .insert({
+                        title,
+                        content,
+                        member_id: userData.memberId,
+                        create_date: new Date().toISOString(),
+                    });
+                if (error) throw error;
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['board'] });
+            if (isEditMode && post) {
+                queryClient.invalidateQueries({ queryKey: ['comments', post.boardId] }); // 사실 보드 정보도 갱신해야함
+            }
+            toast.success(isEditMode ? "수정이 완료되었습니다." : "게시글이 등록되었습니다.");
+            onSuccess();
+        },
+        onError: (error: any) => {
+            toast.error(`오류 발생: ${error.message || '통신 오류'}`);
+        }
+    });
 
     useEffect(() => {
         if (isEditMode && post) {
@@ -37,50 +73,12 @@ export default function BoardWrite({ onBack, onSuccess, mode = 'write', post, us
     }, [isEditMode, post]);
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         if (!title.trim() || !content.trim()) {
-            alert("제목과 내용을 모두 입력해주십시오.");
+            toast.warning("제목과 내용을 모두 입력해주십시오.");
             return;
         }
-        try {
-            if (isEditMode && post) {
-                const { error } = await supabase
-                    .from('board')
-                    .update({
-                        title,
-                        content,
-                    })
-                    .eq('board_id', post.boardId);
-
-                if (error) throw error;
-            } else {
-                // For new posts, we need member_id
-                if (!userData?.memberId) {
-                    alert("로그인 정보가 없습니다.");
-                    return;
-                }
-
-                // Note: board_id is bigint NOT NULL in schema. 
-                // If it doesn't have a default/sequence, it might fail.
-                // But usually in Supabase it's auto-incrementing.
-                const { error } = await supabase
-                    .from('board')
-                    .insert({
-                        title,
-                        content,
-                        member_id: userData.memberId,
-                        create_date: new Date().toISOString(),
-                    });
-
-                if (error) throw error;
-            }
-
-            alert(isEditMode ? "수정 완료" : "등록 완료");
-            onSuccess();
-        } catch (err: any) {
-            console.error("저장 에러:", err);
-            alert(`오류 발생: ${err.message || '통신 오류'}`);
-        }
+        postMutation.mutate({ title, content });
     };
 
     return (
@@ -98,7 +96,7 @@ export default function BoardWrite({ onBack, onSuccess, mode = 'write', post, us
                         onClick={onBack} 
                         className="p-3 bg-white/50 rounded-2xl hover:bg-white dark:hover:bg-orange-400 transition-all active:scale-90 dark:bg-zinc-600/30 dark:border-zinc-400/10"
                     >
-                        <FaArrowLeft className="text-slate-700 dark:text-white" />
+                        <ArrowLeft className="w-5 h-5 text-slate-700 dark:text-white" />
                     </button>
                     <div className="flex flex-col">
                         <span className="text-[10px] font-black text-orange-400 tracking-[0.2em] uppercase opacity-80">Community Board</span>
@@ -147,9 +145,10 @@ export default function BoardWrite({ onBack, onSuccess, mode = 'write', post, us
                     </button>
                     <button 
                         onClick={handleSubmit}
-                        className="flex-2 p-5 bg-orange-400 text-white rounded-3xl font-[1000] text-lg md:text-xl shadow-[0_20px_40px_-10px_rgba(249,115,22,0.4)] hover:bg-orange-600 active:scale-95 transition-all flex items-center justify-center gap-3"
+                        disabled={postMutation.isPending}
+                        className="flex-2 p-5 bg-orange-400 text-white rounded-3xl font-[1000] text-lg md:text-xl shadow-[0_20px_40px_-10px_rgba(249,115,22,0.4)] hover:bg-orange-600 active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                     >
-                        <FaPaperPlane />
+                        <Send className="w-6 h-6" />
                         <span>{isEditMode ? "UPDATE POST" : "POST NOW"}</span>
                     </button>
                 </div>

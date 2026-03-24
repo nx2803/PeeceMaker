@@ -2,7 +2,9 @@
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { BsGoogle, BsGithub } from "react-icons/bs";
+import { Globe, ArrowLeft } from "lucide-react";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { toast } from "sonner";
 import { useTheme } from "next-themes";
 import { createClient } from "@/utils/supabase/client";
 
@@ -49,7 +51,7 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("제대로 입력하세요(이메일, 비밀번호)")
+      toast.warning("이메일과 비밀번호를 모두 입력해주세요.");
       return;
     }
 
@@ -62,13 +64,14 @@ export default function LoginPage() {
       });
 
       if (!error) {
+        toast.success("로그인 성공! 환영합니다.");
         router.push("/main");
       } else {
         console.error(error);
-        alert(`로그인 실패: ${error.message}`);
+        toast.error(`로그인 실패: ${error.message}`);
       }
     } catch (error) {
-      alert(`로그인 실패`);
+      toast.error(`로그인 도중 오류가 발생했습니다.`);
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -91,7 +94,7 @@ export default function LoginPage() {
     });
     if (error) {
       console.error(error);
-      alert(`소셜 로그인 실패: ${error.message}`);
+      toast.error(`소셜 로그인 실패: ${error.message}`);
     }
   };
 
@@ -171,15 +174,14 @@ export default function LoginPage() {
               <span className="relative bg-transparent px-4 text-[10px] font-black text-slate-400 tracking-[0.3em] uppercase">Or Continue With</span>
             </motion.div>
 
-
             <motion.div variants={itemVars} className="grid grid-cols-2 gap-4">
               {/* 구글 */}
-              <button type="button" onClick={() => handleSocialLogin('google')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
-                <span className="text-2xl text-blue-600"><BsGoogle /></span>
+              <button type="button" onClick={() => handleSocialLogin('google')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90" title="Google Login">
+                <span className="text-2xl text-blue-600"><FaGoogle className="w-6 h-6" /></span>
               </button>
               {/* 깃허브 */}
-              <button type="button" onClick={() => handleSocialLogin('github')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90">
-                <span className="text-3xl text-black dark:text-white"><BsGithub /></span>
+              <button type="button" onClick={() => handleSocialLogin('github')} className="flex items-center justify-center py-5 bg-white/40 border border-white/20 rounded-2xl transition-all hover:bg-white/70 duration-300 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:hover:bg-zinc-600/90" title="Github Login">
+                <span className="text-3xl text-black dark:text-white"><FaGithub className="w-7 h-7" /></span>
               </button>
             </motion.div>
           </form>
@@ -190,9 +192,10 @@ export default function LoginPage() {
             </button>
             <button
               onClick={() => router.back()}
-              className="text-[10px] font-bold text-slate-400 tracking-[0.5em] uppercase hover:text-orange-500 transition-colors"
+              className="flex items-center gap-1 text-[10px] font-bold text-slate-400 tracking-[0.5em] uppercase hover:text-orange-500 transition-colors"
             >
-              ← Return
+              <ArrowLeft className="w-3 h-3" />
+              Return
             </button>
           </motion.div>
 

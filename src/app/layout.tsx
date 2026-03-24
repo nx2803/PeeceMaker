@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Chiron_GoRound_TC } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/app/components/theme-provider";
+import Providers from "./providers";
 
 const chiron = Chiron_GoRound_TC({
   weight: "400",
@@ -34,13 +34,7 @@ export default function RootLayout({
       <body
         className={`${chiron.className} ${chiron.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem={true}
-          disableTransitionOnChange
-        >{children}</ThemeProvider>
-
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -2,10 +2,10 @@
 import React from 'react'
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Map, CustomOverlayMap, MarkerClusterer, useKakaoLoader } from "react-kakao-maps-sdk";
 import { useState, useEffect } from "react";
-import { FaMale, FaFemale, FaWheelchair, FaBaby, FaTimes, FaUserCircle } from "react-icons/fa";
-import { MdBabyChangingStation } from "react-icons/md";
+import { X, User, Accessibility, Baby, Send, Star, Trash2, Edit2, MapPin } from "lucide-react";
+import { toast } from "sonner";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import kmap from '@/assets/map.png';
 import { createClient } from '@/utils/supabase/client';
@@ -46,22 +46,24 @@ interface ToiletPopupProps {
     data: Toilet;
     myPos: { lat: number; lng: number };
     onClose: () => void;
-    User?: any;
+    userData?: any;
 }
 
-export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupProps) {
+export default function ToiletPopup({ data, myPos, onClose, userData }: ToiletPopupProps) {
 
     const kakaoMapUrl = `https://map.kakao.com/link/from/현재위치,${myPos.lat},${myPos.lng}/to/${data.toiletNm},${data.laCrdnt},${data.loCrdnt}`;
     const [rating, setRating] = useState(5);
-    const [reviews, setReviews] = useState<Review[]>([]);
     const [comment, setComment] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [editingReviewId, setEditingReviewId] = useState<number | null>(null);
     const [editContent, setEditContent] = useState("");
     const [editRating, setEditRating] = useState(5);
     const supabase = createClient();
-    const fetchReviews = async () => {
-        try {
+    const queryClient = useQueryClient();
+
+    // 리뷰 목록 가져오기
+    const { data: reviews = [], isLoading: isReviewsLoading } = useQuery({
+        queryKey: ['reviews', data.dataCd],
+        queryFn: async () => {
             const { data: reviewData, error } = await supabase
                 .from('review')
                 .select(`
@@ -69,120 +71,122 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                     content,
                     point,
                     createDate:create_date,
-                    member:member_id (
-                        memberId:member_id,
-                        nickname
+                    member_id,
+                    member_profile (
+                        member_id,
+                        nickname,
+                        username
                     )
                 `)
                 .eq('data_cd', data.dataCd)
                 .order('review_id', { ascending: false });
 
-            if (reviewData) {
-                const formatted = reviewData.map((rev: any) => ({
-                    reviewId: rev.reviewId,
-                    content: rev.content,
-                    point: rev.point,
-                    createDate: rev.createDate,
-                    member: {
-                        memberId: rev.member?.memberId || 'Unknown',
-                        nickname: rev.member?.nickname || 'Unknown'
-                    }
-                }));
-                setReviews(formatted as any);
-            } else if (error) {
-                console.error("Supabase 에러:", error);
-            }
-        } catch (err) {
-            console.error("리뷰 로드 실패: ", err);
+            if (error) throw error;
+
+            return reviewData.map((rev: any) => ({
+                reviewId: rev.reviewId,
+                content: rev.content,
+                point: rev.point,
+                createDate: rev.createDate,
+                member: {
+                    memberId: rev.member_id || rev.member_profile?.member_id || 'Unknown',
+                    nickname: (() => {
+                        const m = Array.isArray(rev.member_profile) ? rev.member_profile[0] : rev.member_profile;
+                        if (m?.nickname) return m.nickname;
+                        if (m?.username) return m.username.split('@')[0];
+                        if (rev.member_id) return `User_${String(rev.member_id).substring(0, 5)}`;
+                        return 'Unknown';
+                    })()
+                }
+            })) as any[];
         }
-    };
+    });
 
-    useEffect(() => {
-        fetchReviews();
-    }, [data.dataCd]);
-
-
-    const averageRating = reviews.length > 0
-        ? (reviews.reduce((acc, rev) => acc + rev.point, 0) / reviews.length).toFixed(1)
-        : "0.0";
-
-
-    //리뷰 작성
-    const handleSubmitReview = async () => {
-        if (!comment.trim() || isSubmitting) return;
-        if (!User?.memberId) {
-            alert("로그인이 필요합니다.");
-            return;
-        }
-        setIsSubmitting(true);
-        try {
+    // 리뷰 작성 Mutation
+    const addReviewMutation = useMutation({
+        mutationFn: async ({ content, rating }: { content: string, rating: number }) => {
             const { error } = await supabase
                 .from('review')
                 .insert({
                     data_cd: data.dataCd,
-                    content: comment,
+                    content,
                     point: rating,
-                    member_id: User.memberId,
+                    member_id: userData.memberId,
                     create_date: new Date().toISOString()
                 });
-
-            if (!error) {
-                setComment("");
-                setRating(5);
-                await fetchReviews();
-            } else {
-                alert(`제출 실패: ${error.message}`);
-            }
-        } catch (err) {
-            console.error("리뷰 제출 실패: ", err);
-        } finally {
-            setIsSubmitting(false);
+            if (error) throw error;
+        },
+        onSuccess: () => {
+            setComment("");
+            setRating(5);
+            queryClient.invalidateQueries({ queryKey: ['reviews', data.dataCd] });
+            toast.success("리뷰가 등록되었습니다.");
+        },
+        onError: (error) => {
+            toast.error("리뷰 작성 실패: " + error.message);
         }
+    });
+
+    // 리뷰 수정 Mutation
+    const updateReviewMutation = useMutation({
+        mutationFn: async ({ id, content, point }: { id: number, content: string, point: number }) => {
+            const { error } = await supabase
+                .from('review')
+                .update({ content, point })
+                .eq('review_id', id);
+            if (error) throw error;
+        },
+        onSuccess: () => {
+            setEditingReviewId(null);
+            queryClient.invalidateQueries({ queryKey: ['reviews', data.dataCd] });
+            toast.success("리뷰가 수정되었습니다.");
+        },
+        onError: (error) => {
+            toast.error("리뷰 수정 실패: " + error.message);
+        }
+    });
+
+    // 리뷰 삭제 Mutation
+    const deleteReviewMutation = useMutation({
+        mutationFn: async (id: number) => {
+            const { error } = await supabase
+                .from('review')
+                .delete()
+                .eq('review_id', id);
+            if (error) throw error;
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['reviews', data.dataCd] });
+            toast.success("리뷰가 삭제되었습니다.");
+        },
+        onError: (error) => {
+            toast.error("리뷰 삭제 실패: " + error.message);
+        }
+    });
+    //리뷰 작성
+    const handleSubmitReview = () => {
+        if (!comment.trim() || addReviewMutation.isPending) return;
+        if (!userData?.memberId) {
+            toast.warning("로그인이 필요합니다.");
+            return;
+        }
+        addReviewMutation.mutate({ content: comment, rating });
     };
 
     // 리뷰 수정
-    const handleUpdateReview = async (reviewId: number) => {
-        try {
-            const { error } = await supabase
-                .from('review')
-                .update({
-                    content: editContent,
-                    point: editRating
-                })
-                .eq('review_id', reviewId);
-
-            if (!error) {
-                setEditingReviewId(null);
-                await fetchReviews();
-                console.log("수정 완료!");
-            } else {
-                alert(`수정 실패: ${error.message}`);
-            }
-        } catch (err) {
-            console.error("🚨 수정 에러:", err);
-        }
+    const handleUpdateReview = (reviewId: number) => {
+        updateReviewMutation.mutate({ id: reviewId, content: editContent, point: editRating });
     };
 
     // 리뷰 삭제
-    const handleDeleteReview = async (reviewId: number) => {
+    const handleDeleteReview = (reviewId: number) => {
         if (!confirm("리뷰를 삭제하시겠습니까?")) return;
-
-        try {
-            const { data, error } = await supabase
-                .from('review')
-                .delete()
-                .eq('review_id', reviewId);
-
-            if (!error) {
-                console.log("삭제 완료");
-                await fetchReviews(); // Re-fetch reviews after deletion
-            } else {
-                alert(`삭제 실패: ${error.message}`);
-            }
-        } catch (err) {
-            console.error("삭제 통신 오류:", err);
-        }
+        deleteReviewMutation.mutate(reviewId);
     };
+
+    const averageRating = reviews.length > 0
+        ? (reviews.reduce((acc, rev) => acc + rev.point, 0) / reviews.length).toFixed(1)
+        : "0.0";
 
     return (
         <motion.div
@@ -197,7 +201,7 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                 onClick={onClose}
                 className="absolute top-4 right-4 z-50 p-2 bg-black/10 backdrop-blur-md rounded-full text-white hover:bg-orange-400 transition-all"
             >
-                <FaTimes size={16} />
+                <X size={16} />
             </button>
             <div className="relative h-60 w-full">
                 <img
@@ -234,31 +238,29 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                 <div className="flex flex-row items-center w-full justify-between ic">
                     <div className="flex flex-row gap-1.5">
                         {(Number(data.maleClosetCnt) > 0) && (
-                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-cyan-50 rounded-xl text-cyan-600 shadow-sm border border-cyan-100/50">
-                                <FaMale size={22} />
+                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-cyan-50 rounded-xl text-cyan-600 shadow-sm border border-cyan-100/50" title="남성용">
+                                <User className="w-5 h-5" />
                             </div>
                         )}
                         {(Number(data.femaleClosetCnt) > 0) && (
-                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-rose-50 rounded-xl text-rose-600 shadow-sm border border-rose-100/50">
-                                <FaFemale size={22} />
+                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-rose-50 rounded-xl text-rose-600 shadow-sm border border-rose-100/50" title="여성용">
+                                <User className="w-5 h-5" />
                             </div>
                         )}
                         {(Number(data.maleDspsnClosetCnt) > 0 || Number(data.femaleDspsnClosetCnt) > 0) && (
-                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-blue-50 rounded-xl text-blue-600 shadow-sm border border-blue-100/50">
-                                <FaWheelchair size={22} />
+                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-blue-50 rounded-xl text-blue-600 shadow-sm border border-blue-100/50" title="장애인용">
+                                <Accessibility className="w-5 h-5" />
                             </div>
                         )}
                         {data.diaperExhgTablYn === "Y" && (
-                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-amber-50 rounded-xl text-amber-600 shadow-sm border border-amber-100/50">
-                                <MdBabyChangingStation size={27} />
+                            <div className="w-10 h-7 md:w-14 md:h-9 flex items-center justify-center bg-amber-50 rounded-xl text-amber-600 shadow-sm border border-amber-100/50" title="기저귀 교환대">
+                                <Baby className="w-5 h-5" />
                             </div>
                         )}
                     </div>
 
                     <div className="flex items-center bg-orange-400 text-white px-3 py-1 rounded-full shadow-lg transform ">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mr-1">
-                            <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                        </svg>
+                        <Star className="w-4 h-4 mr-1 fill-current" />
                         <span className="font-black text-lg">{averageRating}</span>
                     </div>
 
@@ -302,14 +304,7 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                                     onClick={() => setRating(star)}
                                     className={`transition-all duration-200 ${star <= rating ? "text-orange-400 scale-110" : "text-slate-300"}`}
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        className="w-7 h-7 md:w-8 md:h-8"
-                                    >
-                                        <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
-                                    </svg>
+                                    <Star className={`w-7 h-7 md:w-8 md:h-8 ${star <= rating ? "fill-current" : ""}`} />
                                 </button>
                             ))}
                         </div>
@@ -323,9 +318,13 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                         />
                         <button
                             onClick={handleSubmitReview}
-                            className="absolute right-4 bottom-4 px-6 py-3 bg-orange-400 text-white rounded-2xl font-black text-sm hover:bg-orange-500 hover:scale-105 active:scale-95 transition-all shadow-lg "
+                            disabled={addReviewMutation.isPending || !comment.trim()}
+                            className="absolute right-4 bottom-4 px-6 py-3 bg-orange-400 text-white rounded-2xl font-black text-sm hover:bg-orange-500 hover:scale-105 active:scale-95 transition-all shadow-lg disabled:opacity-50"
                         >
-                            POST
+                            <div className="flex items-center gap-2">
+                                <Send className="w-4 h-4" />
+                                POST
+                            </div>
                         </button>
                     </div>
 
@@ -338,9 +337,7 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                                         <div className="flex gap-1">
                                             {[1, 2, 3, 4, 5].map((num) => (
                                                 <button key={num} onClick={() => setEditRating(num)}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-5 h-5 ${num <= editRating ? "text-orange-400" : "text-slate-300"}`}>
-                                                        <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                                                    </svg>
+                                                    <Star className={`w-5 h-5 ${num <= editRating ? "text-orange-400 fill-current" : "text-slate-300"}`} />
                                                 </button>
                                             ))}
                                         </div>
@@ -358,22 +355,20 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                                     /* 일반 모드 UI */
                                     <>
                                         <div className="flex justify-between items-center mb-2 ">
-                                            <span className="font-black text-slate-800 dark:text-white flex flex-row">
-                                                <div className="w-5 h-5 md:w-6 md:h-6 mr-1 rounded-full text-slate-700 dark:text-orange-400 flex items-center justify-center text-5xl overflow-hidden">
-                                                    <FaUserCircle />
-                                                </div>{rev.member.nickname}</span>
+                                            <span className="font-black text-slate-800 dark:text-white flex items-center gap-2">
+                                                <User className="w-5 h-5 text-slate-700 dark:text-orange-400" />
+                                                {rev.member.nickname}
+                                            </span>
                                             <div className="flex text-orange-400">
                                                 {[...Array(rev.point)].map((_, i) => (
-                                                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                                        <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                                                    </svg>
+                                                    <Star key={i} className="w-4 h-4 fill-current" />
                                                 ))}
                                             </div>
                                         </div>
                                         <p className="text-slate-700 dark:text-zinc-200 font-bold leading-relaxed pr-16">{rev.content}</p>
                                         <span className="text-[10px] text-slate-400 mt-2 block font-black uppercase tracking-tighter">{rev.createDate}</span>
 
-                                        {(User && (rev.member.memberId === User.memberId || User.role === "ROLE_ADMIN")) && (
+                                        {(userData && (rev.member.memberId === userData.memberId || userData.role === "ROLE_ADMIN")) && (
                                             <div className="absolute bottom-4 right-6 flex gap-2">
                                                 <button
                                                     onClick={() => {
@@ -381,14 +376,16 @@ export default function ToiletPopup({ data, myPos, onClose, User }: ToiletPopupP
                                                         setEditContent(rev.content);
                                                         setEditRating(rev.point);
                                                     }}
-                                                    className="text-[10px] font-black text-slate-400 hover:text-orange-400 transition-colors uppercase"
+                                                    className="flex items-center gap-1 text-[10px] font-black text-slate-400 hover:text-orange-400 transition-colors uppercase"
                                                 >
+                                                    <Edit2 className="w-3 h-3" />
                                                     Edit
                                                 </button>
                                                 <button
                                                     onClick={() => handleDeleteReview(rev.reviewId)}
-                                                    className="text-[10px] font-black text-slate-400 hover:text-rose-500 transition-colors uppercase"
+                                                    className="flex items-center gap-1 text-[10px] font-black text-slate-400 hover:text-rose-500 transition-colors uppercase"
                                                 >
+                                                    <Trash2 className="w-3 h-3" />
                                                     Delete
                                                 </button>
                                             </div>

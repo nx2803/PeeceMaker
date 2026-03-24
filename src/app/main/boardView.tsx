@@ -1,8 +1,19 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { FaEdit, FaUserCircle, FaSearch, FaChevronLeft, FaChevronRight, FaRegCommentDots } from "react-icons/fa";
+import { 
+    Edit3, 
+    User, 
+    Search, 
+    ChevronLeft, 
+    ChevronRight, 
+    MessageSquare,
+    ChevronsLeft,
+    ChevronsRight
+} from "lucide-react";
+import { toast } from "sonner";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import BoardDetail from './boardDetail';
 import BoardWrite from './boardWrite';
 import { createClient } from '@/utils/supabase/client';
@@ -22,9 +33,7 @@ interface BoardViewProps {
 }
 
 export default function BoardView({ userData }: BoardViewProps) {
-    const [board, setBoard] = useState<Board[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const [isReady, setIsReady] = useState(false);
     const [viewMode, setViewMode] = useState<'list' | 'write' | 'detail' | 'edit'>('list');
     const [selectedPost, setSelectedPost] = useState<Board | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -32,9 +41,11 @@ export default function BoardView({ userData }: BoardViewProps) {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     const supabase = createClient();
+    const queryClient = useQueryClient();
 
-    const fetchBoardData = useCallback(async () => {
-        try {
+    const { data: board = [], isLoading } = useQuery({
+        queryKey: ['board'],
+        queryFn: async () => {
             const { data, error } = await supabase
                 .from('board')
                 .select(`
@@ -43,36 +54,36 @@ export default function BoardView({ userData }: BoardViewProps) {
                     content,
                     memberId:member_id,
                     createDate:create_date,
-                    member:member_id (nickname),
+                    member_profile (nickname, username),
                     comment (count)
                 `)
                 .order('board_id', { ascending: false });
 
-            if (data) {
-                const formattedData = data.map((item: any) => ({
+            if (error) {
+                toast.error("데이터 로딩 실패: " + error.message);
+                throw error;
+            }
+
+            return data.map((item: any) => {
+                const m = Array.isArray(item.member_profile) ? item.member_profile[0] : item.member_profile;
+                let displayNick = 'Unknown';
+                if (m?.nickname) displayNick = m.nickname;
+                else if (m?.username) displayNick = m.username.split('@')[0];
+                else if (m?.name) displayNick = m.name;
+                else if (item.memberId) displayNick = `User_${String(item.memberId).substring(0, 5)}`;
+
+                return {
                     boardId: item.boardId,
-                    nickname: item.member?.nickname || 'Unknown',
+                    nickname: displayNick,
                     title: item.title,
                     content: item.content,
                     memberId: item.memberId,
                     createDate: item.createDate,
                     commentCnt: item.comment?.[0]?.count || 0
-                }));
-
-                setBoard(formattedData);
-            } else if (error) {
-                console.error("Supabase 에러:", error);
-            }
-        } catch (err) {
-            console.error("데이터 로딩 에러:", err);
-        } finally {
-            setIsReady(true);
+                } as Board;
+            });
         }
-    }, [supabase]);
-
-    useEffect(() => {
-        fetchBoardData();
-    }, [fetchBoardData]);
+    });
 
     useEffect(() => {
         if (scrollContainerRef.current) {
@@ -116,13 +127,13 @@ export default function BoardView({ userData }: BoardViewProps) {
 
     const handleWriteClick = () => {
         if (!userData || !userData.nickname) {
-            alert("로그인이 필요한 서비스입니다.");
+            toast.warning("로그인이 필요한 서비스입니다.");
             return;
         }
         setViewMode('write');
     };
 
-    if (!isReady) return null;
+    if (isLoading) return null;
 
     return (
         <div className="w-full h-full flex items-center justify-center pt-24 pb-32 md:pt-32 md:pb-40 px-4 md:px-8 bg-transparent">
@@ -151,7 +162,7 @@ export default function BoardView({ userData }: BoardViewProps) {
                                                         </h3>
                                                         {post.commentCnt > 0 && (
                                                             <span className="inline-flex items-center gap-1 px-1 py-0.5 rounded-full text-orange-400 md:text-xs font-black">
-                                                                <FaRegCommentDots className="text-[12px]" />
+                                                                <MessageSquare className="w-3 h-3" />
                                                                 {post.commentCnt}
                                                             </span>
                                                         )}
@@ -160,7 +171,7 @@ export default function BoardView({ userData }: BoardViewProps) {
                                                 </div>
                                                 <div className="md:col-span-3 flex items-center md:items-end md:justify-center justify-between mt-2 md:mt-0">
                                                     <div className="flex items-center gap-2">
-                                                        <FaUserCircle className="text-slate-700 dark:text-orange-400 text-xl" />
+                                                        <User className="w-4 h-4 text-slate-700 dark:text-orange-400" />
                                                         <span className="font-black text-[11px] md:text-sm tracking-tight">{post.nickname}</span>
                                                     </div>
                                                 </div>
@@ -175,25 +186,25 @@ export default function BoardView({ userData }: BoardViewProps) {
 
                             {totalPages > 0 && (
                                 <div className="flex justify-center items-center gap-1 md:gap-2 py-4">
-                                    <button disabled={currentPage === 1} onClick={() => setCurrentPage(1)} className="w-8 h-8 flex items-center justify-center disabled:opacity-10 hover:text-orange-400 transition-colors"><div className="flex items-center -space-x-1"><FaChevronLeft size={10} /><FaChevronLeft size={10} /></div></button>
-                                    <button disabled={currentPage === 1} onClick={() => setCurrentPage(p => p - 1)} className="w-8 h-8 flex items-center justify-center disabled:opacity-20 hover:text-orange-400 transition-colors"><FaChevronLeft size={14} /></button>
+                                    <button disabled={currentPage === 1} onClick={() => setCurrentPage(1)} className="w-8 h-8 flex items-center justify-center disabled:opacity-10 hover:text-orange-400 transition-colors"><div className="flex items-center -space-x-1"><ChevronsLeft size={16} /></div></button>
+                                    <button disabled={currentPage === 1} onClick={() => setCurrentPage(p => p - 1)} className="w-8 h-8 flex items-center justify-center disabled:opacity-20 hover:text-orange-400 transition-colors"><ChevronLeft size={16} /></button>
                                     <div className="flex items-center gap-1 md:gap-2">
                                         {getPageNumbers().map((pageNum) => (
                                             <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-xl font-black text-xs md:text-sm transition-all ${currentPage === pageNum ? "bg-orange-400 text-white shadow-lg shadow-orange-400/30" : "hover:bg-white/60 dark:bg-zinc-600/60 dark:text-white text-slate-600 bg-white/30 dark:hover:bg-zinc-500"}`}>{pageNum}</button>
                                         ))}
                                     </div>
-                                    <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(p => p + 1)} className="w-8 h-8 flex items-center justify-center disabled:opacity-20 hover:text-orange-400 transition-colors"><FaChevronRight size={14} /></button>
-                                    <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(totalPages)} className="w-8 h-8 flex items-center justify-center disabled:opacity-10 hover:text-orange-400 transition-colors"><div className="flex items-center -space-x-1"><FaChevronRight size={10} /><FaChevronRight size={10} /></div></button>
+                                    <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(p => p + 1)} className="w-8 h-8 flex items-center justify-center disabled:opacity-20 hover:text-orange-400 transition-colors"><ChevronRight size={16} /></button>
+                                    <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(totalPages)} className="w-8 h-8 flex items-center justify-center disabled:opacity-10 hover:text-orange-400 transition-colors"><div className="flex items-center -space-x-1"><ChevronsRight size={16} /></div></button>
                                 </div>
                             )}
 
                             <div className="px-6 md:px-10 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
                                 <div className="relative w-full md:w-72 group">
-                                    <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-white group-focus-within:text-orange-400 transition-colors " />
+                                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-white group-focus-within:text-orange-400 transition-colors " />
                                     <input type="text" placeholder="SEARCH POSTS" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full bg-white/50 border border-white/60 rounded-2xl py-3 pl-12 pr-4 text-sm font-black focus:outline-none focus:ring-2 focus:ring-orange-400/50 transition-all placeholder:text-slate-400 dark:bg-zinc-600/30 dark:border-zinc-400/10 dark:text-white" />
                                 </div>
                                 <button onClick={handleWriteClick} className="w-full md:w-auto px-8 py-4 bg-orange-400 text-white rounded-2xl md:rounded-3xl flex items-center justify-center gap-3 border border-white/20 hover:bg-orange-500 active:scale-95 transition-all duration-300">
-                                    <FaEdit className="text-xl md:text-2xl" />
+                                    <Edit3 className="w-5 h-5 md:w-6 md:h-6" />
                                     <span className="font-[1000] tracking-tighter text-sm md:text-base uppercase">Write</span>
                                 </button>
                             </div>
@@ -206,7 +217,7 @@ export default function BoardView({ userData }: BoardViewProps) {
                             post={viewMode === 'edit' ? selectedPost : null}
                             onBack={() => setViewMode(viewMode === 'edit' ? 'detail' : 'list')}
                             onSuccess={() => {
-                                fetchBoardData(); 
+                                queryClient.invalidateQueries({ queryKey: ['board'] });
                                 setViewMode('list');
                             }}
                         />
@@ -219,7 +230,7 @@ export default function BoardView({ userData }: BoardViewProps) {
                                 onBack={() => setViewMode('list')}
                                 onEdit={() => setViewMode('edit')}
                                 onDeleteSuccess={() => {
-                                    fetchBoardData();
+                                    queryClient.invalidateQueries({ queryKey: ['board'] });
                                     setViewMode('list');
                                 }}
                             />

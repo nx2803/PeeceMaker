@@ -4,6 +4,8 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { toast } from "sonner";
+import { ArrowLeft, Trash2 } from "lucide-react";
 
 export default function ChangeInfoPage() {
   const router = useRouter();
@@ -79,14 +81,14 @@ export default function ChangeInfoPage() {
     e.preventDefault();
 
     if (provider === "LOCAL" && !password) {
-      alert("기존 비밀번호를 입력해주십시오.");
+      toast.warning("기존 비밀번호를 입력해주세요.");
       return;
     }
 
     const finalNickname = (nickname && nickname.trim() !== "") ? nickname : originNickname;
 
     if (provider === "LOCAL" && newPassword && newPassword !== newPasswordrepeat) {
-      alert("새 비밀번호 확인이 일치하지 않습니다.");
+      toast.warning("새 비밀번호 확인이 일치하지 않습니다.");
       return;
     }
 
@@ -104,12 +106,13 @@ export default function ChangeInfoPage() {
       const { error } = await supabase.auth.updateUser(updates);
 
       if (!error) {
-        alert("정보가 수정되었습니다.");
+        toast.success("회원 정보가 수정되었습니다.");
         router.push("/main");
       } else {
-        alert(`수정 실패: ${error.message}`);
+        toast.error(`수정 실패: ${error.message}`);
       }
     } catch (error) {
+      toast.error("정보 수정 중 오류가 발생했습니다.");
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -117,11 +120,7 @@ export default function ChangeInfoPage() {
   };
 
   const handleDeleteAccount = async () => {
-    alert("Supabase 클라이언트에서 직접 계정 탈퇴는 지원되지 않습니다. 관리자 도구를 사용하거나 Edge Function을 설정해야 합니다.");
-    /* 
-    // Edge Function 예시:
-    const { error } = await supabase.functions.invoke('delete-user');
-    */
+    toast.error("직접 계정 탈퇴는 지원되지 않습니다. 관리자에게 문의하세요.");
   };
 
   return (
@@ -196,14 +195,16 @@ export default function ChangeInfoPage() {
           <motion.div variants={itemVars} className="mt-12 flex flex-col items-center gap-6">
             <button
               onClick={() => router.back()}
-              className="text-[10px] font-bold text-slate-400 tracking-[0.5em] uppercase hover:text-orange-500 transition-colors"
+              className="flex items-center gap-1 text-[10px] font-bold text-slate-400 tracking-[0.5em] uppercase hover:text-orange-500 transition-colors"
             >
-              ← Return
+              <ArrowLeft className="w-3 h-3" />
+              Return
             </button>
             <button
               onClick={handleDeleteAccount}
-              className="mt-4 text-[12px] font-bold text-rose-400/80 tracking-[0.3em] uppercase hover:text-red-500 transition-colors cursor-pointer"
+              className="flex items-center gap-2 mt-4 text-[12px] font-bold text-rose-400/80 tracking-[0.3em] uppercase hover:text-red-500 transition-colors cursor-pointer"
             >
+              <Trash2 className="w-4 h-4" />
               DELETE YOUR ACCOUNT
             </button>
           </motion.div>

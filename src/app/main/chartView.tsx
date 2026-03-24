@@ -6,8 +6,7 @@ import {
     BarChart, Bar, XAxis, YAxis, ResponsiveContainer,
     PieChart, Pie, Cell, Legend, LabelList
 } from 'recharts';
-import { FaShieldAlt, FaWheelchair, FaToilet, FaLayerGroup } from "react-icons/fa";
-import { MdBabyChangingStation } from "react-icons/md";
+import { ShieldCheck, Accessibility, MapPin, Baby } from "lucide-react";
 import { useTheme } from 'next-themes';
 import { createClient } from '@/utils/supabase/client';
 
@@ -150,7 +149,7 @@ export default function ChartView() {
                 <span className={`text-xl font-black shrink-0 w-8 ${type === 'top' ? 'text-emerald-400' : 'text-red-400'}`}>
                     {index + 1}
                 </span>
-                <div className="h-100 w-full">
+                <div className="w-full truncate">
                     <h4 className="font-bold text-slate-800 dark:text-white text-base md:text-lg truncate block" title={item.name}>
                         {item.name}
                     </h4>
@@ -203,10 +202,10 @@ export default function ChartView() {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {[
-                        { id: 'all', label: '전체 시설', icon: <FaToilet />, count: totalStats?.all, color: 'ring-slate-400/50' },
-                        { id: 'secure', label: '비상벨, CCTV 설치 시설', icon: <FaShieldAlt />, count: totalStats?.secure, color: 'ring-emerald-500/50' },
-                        { id: 'accessible', label: '장애인 편의 시설', icon: <FaWheelchair />, count: totalStats?.accessible, color: 'ring-blue-500/50' },
-                        { id: 'family', label: '유아 편의 시설', icon: <MdBabyChangingStation />, count: totalStats?.family, color: 'ring-orange-400/50' },
+                        { id: 'all', label: '전체 시설', icon: <MapPin className="w-5 h-5" />, count: totalStats?.all, color: 'ring-slate-400/50' },
+                        { id: 'secure', label: '비상벨, CCTV 설치 시설', icon: <ShieldCheck className="w-5 h-5" />, count: totalStats?.secure, color: 'ring-emerald-500/50' },
+                        { id: 'accessible', label: '장애인 편의 시설', icon: <Accessibility className="w-5 h-5" />, count: totalStats?.accessible, color: 'ring-blue-500/50' },
+                        { id: 'family', label: '유아 편의 시설', icon: <Baby className="w-5 h-5" />, count: totalStats?.family, color: 'ring-orange-400/50' },
                     ].map((btn) => (
                         <motion.button
                             key={btn.id}

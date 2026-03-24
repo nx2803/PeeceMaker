@@ -2,11 +2,19 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Map, CustomOverlayMap, MarkerClusterer, useKakaoLoader } from "react-kakao-maps-sdk";
 import { useState, useEffect, useMemo } from "react";
-import { FaMale, FaFemale, FaWheelchair, FaBaby, FaTimes, FaToilet, FaShieldAlt, FaLayerGroup, FaFilter } from "react-icons/fa";
-import { FaPersonWalking } from "react-icons/fa6";
-import { MdGpsFixed } from "react-icons/md";
-import { MdBabyChangingStation } from "react-icons/md";
-import ToiletPopup from './ToiletPopup'
+import { 
+    X, 
+    User, 
+    Accessibility, 
+    Baby, 
+    ShieldCheck, 
+    Layers, 
+    Filter, 
+    LocateFixed,
+    MapPin
+} from "lucide-react";
+import dynamic from 'next/dynamic';
+const ToiletPopup = dynamic(() => import('./ToiletPopup'), { ssr: false });
 import { useTheme } from "next-themes";
 import { createClient } from '@/utils/supabase/client';
 interface Toilet {
@@ -151,7 +159,7 @@ export default function MapView({ Pos, userData }: MapViewProps) {
                     className="pointer-events-auto flex items-center gap-3 px-5 py-3 bg-white/50 backdrop-blur-2xl border border-white/60 rounded-4xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all hover:bg-white/80 group dark:bg-zinc-600/40 dark:border-zinc-400/10 dark:hover:bg-zinc-500/40"
                 >
                     <div className={`rounded-lg transition-colors ${isFilterOpen ? ' text-orange-400' : ' text-slate-500 '}`}>
-                        <FaFilter />
+                        <Filter className="w-5 h-5" />
                     </div>
                     <span className=" font-[1000] text-slate-700 dark:text-white uppercase tracking-[0.15em]">
                         Filter
@@ -177,10 +185,10 @@ export default function MapView({ Pos, userData }: MapViewProps) {
                                 </div>
                                 <div className="grid grid-cols-2 gap-2.5">
                                     {[
-                                        { id: 'all', label: '전체', icon: <FaToilet /> },
-                                        { id: 'secure', label: '안심시설', icon: <FaShieldAlt /> },
-                                        { id: 'accessible', label: '장애인용', icon: <FaWheelchair /> },
-                                        { id: 'family', label: '유아동반', icon: <MdBabyChangingStation /> },
+                                        { id: 'all', label: '전체', icon: <MapPin className="w-5 h-5" /> },
+                                        { id: 'secure', label: '안심시설', icon: <ShieldCheck className="w-5 h-5" /> },
+                                        { id: 'accessible', label: '장애인용', icon: <Accessibility className="w-5 h-5" /> },
+                                        { id: 'family', label: '유아동반', icon: <Baby className="w-5 h-5" /> },
                                     ].map((item) => (
                                         <button
                                             key={item.id}
@@ -202,8 +210,8 @@ export default function MapView({ Pos, userData }: MapViewProps) {
                                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Gender Availability</span>
                                 <div className="flex gap-2.5">
                                     {[
-                                        { state: hasMale, setter: setHasMale, icon: <FaMale />, label: '남성용', color: 'bg-cyan-500' },
-                                        { state: hasFemale, setter: setHasFemale, icon: <FaFemale />, label: '여성용', color: 'bg-rose-500' }
+                                        { state: hasMale, setter: setHasMale, icon: <User className="w-4 h-4" />, label: '남성용', color: 'bg-cyan-500' },
+                                        { state: hasFemale, setter: setHasFemale, icon: <User className="w-4 h-4" />, label: '여성용', color: 'bg-rose-500' }
                                     ].map((gen, idx) => (
                                         <button
                                             key={idx}
@@ -247,66 +255,112 @@ export default function MapView({ Pos, userData }: MapViewProps) {
                     <div className="relative flex items-center justify-center ">
                         <div className="absolute w-10 h-10 bg-stone-700/30 rounded-full animate-ping" />
                         <div className="relative w-6 h-6 bg-stone-700/95 backdrop-blur-2xl rounded-full border border-white shadow-lg flex justify-center items-center">
-                            <FaPersonWalking className="text-xl text-stone-100" />
+                            <User className="w-4 h-4 text-stone-100" />
                         </div>
                     </div>
                 </CustomOverlayMap>
 
-                {filteredToilets.map((toilet, index) => (
-                    <CustomOverlayMap
-                        key={`toilet-${toilet.dataCd}-${index}`}
-                        position={{ lat: toilet.laCrdnt, lng: toilet.loCrdnt }}
-                    >
-
-                        <div className={`relative w-0 flex flex-col h-0 items-center justify-end ${resolvedTheme === 'dark' ? 'invert hue-rotate-180' : ''
-                            }`}
-                            onClick={(e) => {
-                                if (!map) return;
-                                const targetPos = new kakao.maps.LatLng(toilet.laCrdnt, toilet.loCrdnt);
-                                if (map.getLevel() > 2) {
-                                    map.setLevel(2);
-                                }
-                                map.panTo(targetPos);
-                                setSelectedToilet(toilet);
-                            }}
+                <MarkerClusterer
+                    averageCenter={true}
+                    minLevel={3}
+                    styles={[
+                        {
+                            width: '40px',
+                            height: '40px',
+                            background: 'rgba(251, 146, 60, 0.7)',
+                            borderRadius: '50%',
+                            color: 'white',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            lineHeight: '40px',
+                            backdropFilter: 'blur(4px)',
+                            border: '1px solid rgba(255, 255, 255, 0.4)',
+                            boxShadow: '0 4px 15px rgba(251, 146, 60, 0.3)'
+                        },
+                        {
+                            width: '50px',
+                            height: '50px',
+                            background: 'rgba(251, 146, 60, 0.85)',
+                            borderRadius: '50%',
+                            color: 'white',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            lineHeight: '50px',
+                            backdropFilter: 'blur(6px)',
+                            border: '1px solid rgba(255, 255, 255, 0.5)',
+                            boxShadow: '0 6px 20px rgba(251, 146, 60, 0.4)'
+                        },
+                        {
+                            width: '60px',
+                            height: '60px',
+                            background: 'rgba(249, 115, 22, 0.95)',
+                            borderRadius: '50%',
+                            color: 'white',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            lineHeight: '60px',
+                            backdropFilter: 'blur(8px)',
+                            border: '1px solid rgba(255, 255, 255, 0.6)',
+                            boxShadow: '0 8px 25px rgba(249, 115, 22, 0.5)'
+                        }
+                    ]}
+                >
+                    {filteredToilets.map((toilet, index) => (
+                        <CustomOverlayMap
+                            key={`toilet-${toilet.dataCd}-${index}`}
+                            position={{ lat: toilet.laCrdnt, lng: toilet.loCrdnt }}
                         >
-                            {(level <= 5) && (
-                                <div className="relative flex flex-col items-center px-2 py-1.5 rounded-3xl bg-white/90 backdrop-blur-4xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/70 group-hover:border-orange-400/50 group-hover:shadow-orange-200/50 group-hover:scale-115 transition-all duration-300 z-20 mb-1 dark:bg-zinc-700/90 dark:border-zinc-400/10 ">
-                                    <span className="text-[14px] font-[1000] text-slate-900 dark:text-white **:tracking-tight  mb-2 max-w-37 truncate">
-                                        {toilet.toiletNm}
-                                    </span>
-                                    <div className="flex gap-1.5 items-center pt-2 border-t border-white/80 dark:border-white/20 w-full justify-center">
-                                        {(Number(toilet.maleClosetCnt) > 0) && (
-                                            <div className="w-10 h-7 flex items-center justify-center bg-cyan-50 rounded-xl text-cyan-600 shadow-sm border border-cyan-100/50">
-                                                <FaMale size={16} />
-                                            </div>
-                                        )}
-                                        {(Number(toilet.femaleClosetCnt) > 0) && (
-                                            <div className="w-10 h-7 flex items-center justify-center bg-rose-50 rounded-xl text-rose-600 shadow-sm border border-rose-100/50">
-                                                <FaFemale size={16} />
-                                            </div>
-                                        )}
-                                        {(Number(toilet.maleDspsnClosetCnt) > 0 || Number(toilet.femaleDspsnClosetCnt) > 0) && (
-                                            <div className="w-10 h-7 flex items-center justify-center bg-blue-50 rounded-xl text-blue-600 shadow-sm border border-blue-100/50">
-                                                <FaWheelchair size={16} />
-                                            </div>
-                                        )}
-                                        {toilet.diaperExhgTablYn === "Y" && (
-                                            <div className="w-10 h-7 flex items-center justify-center bg-amber-50 rounded-xl text-amber-600 shadow-sm border border-amber-100/50">
-                                                <MdBabyChangingStation size={18} />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
 
-                            <div className="relative h-6 w-6 flex items-center justify-center">
-                                <div className="w-3.5 h-3.5 bg-orange-400 rounded-full shadow-md z-10 border border-white/50 dark:border-zinc-800/50 flex justify-center items-center text-center" />
-                                <div className="absolute w-7 h-7 bg-orange-400/30 rounded-full animate-ping" />
+                            <div className={`relative w-0 flex flex-col h-0 items-center justify-end ${resolvedTheme === 'dark' ? 'invert hue-rotate-180' : ''
+                                }`}
+                                onClick={(e) => {
+                                    if (!map) return;
+                                    const targetPos = new kakao.maps.LatLng(toilet.laCrdnt, toilet.loCrdnt);
+                                    if (map.getLevel() > 2) {
+                                        map.setLevel(2);
+                                    }
+                                    map.panTo(targetPos);
+                                    setSelectedToilet(toilet);
+                                }}
+                            >
+                                {(level <= 5) && (
+                                    <div className="relative flex flex-col items-center px-2 py-1.5 rounded-3xl bg-white/90 backdrop-blur-4xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/70 group-hover:border-orange-400/50 group-hover:shadow-orange-200/50 group-hover:scale-115 transition-all duration-300 z-20 mb-1 dark:bg-zinc-700/90 dark:border-zinc-400/10 ">
+                                        <span className="text-[14px] font-[1000] text-slate-900 dark:text-white tracking-tight  mb-2 max-w-37 truncate">
+                                            {toilet.toiletNm}
+                                        </span>
+                                        <div className="flex gap-1.5 items-center pt-2 border-t border-white/80 dark:border-white/20 w-full justify-center">
+                                            {(Number(toilet.maleClosetCnt) > 0) && (
+                                                <div className="w-10 h-7 flex items-center justify-center bg-cyan-50 rounded-xl text-cyan-600 shadow-sm border border-cyan-100/50">
+                                                    <User className="w-4 h-4" />
+                                                </div>
+                                            )}
+                                            {(Number(toilet.femaleClosetCnt) > 0) && (
+                                                <div className="w-10 h-7 flex items-center justify-center bg-rose-50 rounded-xl text-rose-600 shadow-sm border border-rose-100/50">
+                                                    <User className="w-4 h-4" />
+                                                </div>
+                                            )}
+                                            {(Number(toilet.maleDspsnClosetCnt) > 0 || Number(toilet.femaleDspsnClosetCnt) > 0) && (
+                                                <div className="w-10 h-7 flex items-center justify-center bg-blue-50 rounded-xl text-blue-600 shadow-sm border border-blue-100/50">
+                                                    <Accessibility className="w-4 h-4" />
+                                                </div>
+                                            )}
+                                            {toilet.diaperExhgTablYn === "Y" && (
+                                                <div className="w-10 h-7 flex items-center justify-center bg-amber-50 rounded-xl text-amber-600 shadow-sm border border-amber-100/50">
+                                                    <Baby className="w-4 h-4" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="relative h-6 w-6 flex items-center justify-center">
+                                    <div className="w-3.5 h-3.5 bg-orange-400 rounded-full shadow-md z-10 border border-white/50 dark:border-zinc-800/50 flex justify-center items-center text-center" />
+                                    <div className="absolute w-7 h-7 bg-orange-400/30 rounded-full animate-ping" />
+                                </div>
                             </div>
-                        </div>
-                    </CustomOverlayMap>
-                ))}
+                        </CustomOverlayMap>
+                    ))}
+                </MarkerClusterer>
             </Map>
 
             <AnimatePresence>
@@ -315,7 +369,7 @@ export default function MapView({ Pos, userData }: MapViewProps) {
                         data={selectedToilet}
                         onClose={() => setSelectedToilet(null)}
                         myPos={Pos}
-                        User={userData}
+                        userData={userData}
                     />
                 )}
             </AnimatePresence>
@@ -332,7 +386,7 @@ export default function MapView({ Pos, userData }: MapViewProps) {
                     }}
                     className="group relative w-12 h-12 md:w-14 md:h-14 bg-white/40 backdrop-blur-2xl border border-white/60  rounded-full   shadow-[0_0_20px_rgba(0,0,0,0.4)] flex items-center justify-center transition-all active:scale-90 hover:border-orange-400/50 cursor-pointer dark:bg-zinc-600/30 dark:border-zinc-400/10"
                 >
-                    <MdGpsFixed className="text-slate-700 dark:text-white text-2xl group-hover:text-orange-400 transition-colors" />
+                    <LocateFixed className="w-6 h-6 text-slate-700 dark:text-white group-hover:text-orange-400 transition-colors" />
                 </button>
             </div>
         </div>
